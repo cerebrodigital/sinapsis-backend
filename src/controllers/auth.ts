@@ -5,7 +5,7 @@ const request = require("express-validator");
 
 const router: Router = Router();
 
-router.get("/login", (req: Request, res: Response, next: NextFunction) => {
+router.post("/login", (req: Request, res: Response, next: NextFunction) => {
   // TODO validate params
   // req.assert("email", "Email is not valid").isEmail();
   // req.assert("password", "Password cannot be blank").notEmpty();
