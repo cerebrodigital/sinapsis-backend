@@ -13,6 +13,7 @@ import * as dotenv from "dotenv";
 // import * as flash from "express-flash";
 import * as path from "path";
 import * as mongoose from "mongoose";
+import * as cors from "cors";
 // import * as passport from "passport";
 import expressValidator = require("express-validator");
 
@@ -54,6 +55,8 @@ mongoose.connection.on("error", () => {
 });
 
 
+
+
 /**
  * Express configuration.
  */
@@ -61,10 +64,13 @@ app.set("port", process.env.PORT || 3003);
 
 app.use(compression());
 app.use(logger("dev"));
+app.use(cors({
+  origin: "http://localhost:8100",
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
-
 // app.use(passport.initialize());
 // app.use(passport.session());
 // app.use(flash());
