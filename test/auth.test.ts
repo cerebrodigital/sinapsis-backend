@@ -1,9 +1,9 @@
 import * as supertest from "supertest";
-const request = supertest("http://localhost:8000");
+const request = supertest("http://localhost:3003");
 
 describe("GET /", () => {
   it("should return 404 NOT FOUND", (done)=> {
-    request.get("/")
+    request.get("/auth")
       .expect(404, done);
   });
 });

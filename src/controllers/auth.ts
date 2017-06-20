@@ -18,7 +18,7 @@ router.get("/login", (req: Request, res: Response, next: NextFunction) => {
 // TODO up
   const email = req.body.email || req.query.email;
   const password = req.body.password || req.query.password;
-  console.log(email,password,req.params)
+
   User.findOne({ email: email.toLowerCase() }, (err, user: any) => {
     if (err) { return next(err); }
     if (!user) {
