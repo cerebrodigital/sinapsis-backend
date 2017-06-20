@@ -22,7 +22,7 @@ router.get("/login", (req: Request, res: Response, next: NextFunction) => {
   User.findOne({ email: email.toLowerCase() }, (err, user: any) => {
     if (err) { return next(err); }
     if (!user) {
-      return res.status(401).json({ message: `Email ${email} not found.` });
+      return res.status(403).json({ message: "Invalid email or password." });
     }
     user.comparePassword(password, (err: Error, isMatch: boolean) => {
       if (err) { return next(err); }
@@ -31,7 +31,7 @@ router.get("/login", (req: Request, res: Response, next: NextFunction) => {
         const token =  jwt.sign(payload, "serevro dijital");
         return res.json({message: "ok", token: token});
       }
-      return res.json( { message: "Invalid email or password." });
+      return res.status(403).json( { message: "Invalid email or password." });
     });
   });
 
