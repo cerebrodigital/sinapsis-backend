@@ -28,7 +28,7 @@ router.post("/login", (req: Request, res: Response, next: NextFunction) => {
       if (err) { return next(err); }
       if (isMatch) {
         const payload = {id: user.id};
-        const token =  jwt.sign(payload, "serevro dijital");
+        const token =  jwt.sign(payload, process.env.JWT_SECRET);
         return res.json({message: "ok", token: token});
       }
       return res.status(403).json( { message: "Invalid email or password." });
