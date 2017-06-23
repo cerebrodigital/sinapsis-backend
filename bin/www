@@ -27,16 +27,6 @@ var server = http.createServer(app);
  */
 
 models.sequelize.sync().then(function () {
-
-  models.User.findOrCreate({where: {email: 'admin@sinapsis.com', password: md5('mafalda')}})
-  .spread((user,created)=>{
-    if(created){
-      console.log('Admin created')
-    } else {
-      console.log("Admin existed")
-    }
-  })
-
   server.listen(port);
   server.on('error', onError);
   server.on('listening', onListening);
