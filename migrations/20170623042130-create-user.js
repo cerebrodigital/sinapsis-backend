@@ -14,7 +14,10 @@ module.exports = {
       username: {
         type: Sequelize.STRING
       },
-      password: {
+      phash: {
+        type: Sequelize.STRING
+      },
+      vhash: {
         type: Sequelize.STRING
       },
       createdAt: {

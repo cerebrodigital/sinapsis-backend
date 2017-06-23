@@ -11,10 +11,13 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "express-mailer": "^0.3.1",
     "express-session": "^1.15.3",
     "morgan": "~1.8.1",
+    "node-uuid": "^1.4.8",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "pug": "^2.0.0-rc.2",
     "sequelize": "^4.2.0",
     "sequelize-cli": "^2.7.0",
     "sqlite3": "^3.1.8"

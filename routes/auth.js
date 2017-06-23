@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var models  = require('../models');
-var passport = require('passport')
+var passport = require('passport');
+var md5 = require("blueimp-md5");
+var uuid = require('node-uuid');
+var User = models.User
 
 /* GET users listing. */
 router.get('/login', function(req, res, next) {
@@ -22,6 +25,73 @@ router.get('/login', function(req, res, next) {
 router.get('/logout', (req,res,next)=>{
   req.logout()
   res.json({message: 'ok, logged out, successfully :)'})
+})
+
+router.get('/register', (req, res, next)=>{
+  console.log('-----req----', req)
+  // search if exists
+  User.findOne({where: {email: req.body.email}})
+  .then(function(user){
+    if(user){
+      return res.json({message: 'Email used'})
+    }else{
+      User.create({
+        email:    req.body.email,
+        vhash:    uuid.v4()
+      }).then(function(saved){
+        res.mailer.send('activation_email', {
+          to: saved.email,
+          subject: 'Activation',
+          user:     saved
+        }, function (err){
+          if(err){
+            // handle error
+            return next(err)
+          }
+          return res.json({message: 'Email sent'})
+        })
+      })
+    }
+  })
+})
+
+router.get('/activation', (req, res, next)=>{
+  User.findOne({vhash: req.body.vhash})
+  .then((user)=>{
+    if(!user){ next()}
+      user.password = req.body.password
+      user.vhash = null
+      user.save().then(function(saved){
+        return res.json({message: 'User Activated'})
+      })
+  })
+})
+
+router.get('/forgot', (req,res,next)=>{
+  console.log('forgot body', req.body)
+  User.findOne({email: req.body.email})
+  .then((user)=>{
+    console.log('user', user)
+    if(!user){
+      // flash same as if we did find it
+      return res.json({message: "Email sent if email exists, it does't"})
+    }
+    // we did find the user with the email, set hash and send ativation
+    user.vhash = uuid.v4()
+    user.save().then(function(saved){
+      res.mailer.send('activation_email', {
+        to: saved.email,
+        subject: 'Activation',
+        user:     saved
+      }, function (err){
+        if(err){
+          // handle error
+          console.log(err)
+        }
+        return res.json({message: "Email sent if email exists"})
+      })
+    })
+  })
 })
 
 module.exports = router;
