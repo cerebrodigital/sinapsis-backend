@@ -7,7 +7,7 @@ var uuid = require('node-uuid');
 var User = models.User
 
 /* GET users listing. */
-router.get('/login', function(req, res, next) {
+router.post('/login', function(req, res, next) {
   console.log("in get login")
   passport.authenticate('local', function(err,user,info) {
     console.log("loginIn",err, user,info)
@@ -22,13 +22,12 @@ router.get('/login', function(req, res, next) {
 
 });
 
-router.get('/logout', (req,res,next)=>{
+router.post('/logout', (req,res,next)=>{
   req.logout()
   res.json({message: 'ok, logged out, successfully :)'})
 })
 
-router.get('/register', (req, res, next)=>{
-  console.log('-----req----', req)
+router.post('/register', (req, res, next)=>{
   // search if exists
   User.findOne({where: {email: req.body.email}})
   .then(function(user){
@@ -55,7 +54,7 @@ router.get('/register', (req, res, next)=>{
   })
 })
 
-router.get('/activation', (req, res, next)=>{
+router.post('/activation', (req, res, next)=>{
   User.findOne({vhash: req.body.vhash})
   .then((user)=>{
     if(!user){ next()}
@@ -67,7 +66,7 @@ router.get('/activation', (req, res, next)=>{
   })
 })
 
-router.get('/forgot', (req,res,next)=>{
+router.post('/forgot', (req,res,next)=>{
   console.log('forgot body', req.body)
   User.findOne({email: req.body.email})
   .then((user)=>{
