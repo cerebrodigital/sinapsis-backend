@@ -4,23 +4,35 @@ var models  = require('../models');
 var passport = require('passport');
 var md5 = require("blueimp-md5");
 var uuid = require('node-uuid');
+var jwt  = require('jsonwebtoken')
 var User = models.User
 
 /* GET users listing. */
-router.post('/login', function(req, res, next) {
-  console.log("in get login")
-  passport.authenticate('local', function(err,user,info) {
-    console.log("loginIn",err, user,info)
-    if(err){return next(err)}
-    if(!user){ return res.status(401).json({message: "UnAuth"})}
-    req.login(user, function(err){
-      if(err){ return next(err) }
-      return res.json({message: 'ok'})
-    })
 
-  })(req,res,next);
+router.get('/login', function(req, res, next) {
+  let email = req.body.email || req.query.email
+  let password = req.body.password || req.query.password
 
+  User.findOne({where: {email: email}})
+  .catch(err=>{next(err)})
+  .then(user=>{
+    if(!user){
+      return res.status(401).json({message: "wrong credentials"})
+    }
+    if(!user.validPassword(password)){
+      return res.status(401).json({message: "wrong credentials"})
+    }
+    let payload = {
+      id: user.id,
+      email: user.email
+    }
+
+    let token = jwt.sign(payload, 'some secreto')
+
+    res.json({message: "Authenticated", token: token})
+  })
 });
+
 
 router.post('/logout', (req,res,next)=>{
   req.logout()
