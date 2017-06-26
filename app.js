@@ -1,15 +1,15 @@
 var express = require('express');
 var path = require('path');
 
-var logger = require('morgan');
+var logger =       require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var session = require('express-session')
-
-var rootRouter = require('./routes/root');
-var usersRouter = require('./routes/users');
-var authRouter = require('./routes/auth');
-var models  = require('./models');
+var bodyParser =   require('body-parser');
+var session =      require('express-session')
+var cors    =      require('cors')
+var rootRouter =   require('./routes/root');
+var usersRouter =  require('./routes/users');
+var authRouter =   require('./routes/auth');
+var models  =      require('./models');
 
 var User = models.User
 
