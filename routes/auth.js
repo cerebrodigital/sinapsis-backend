@@ -27,9 +27,10 @@ router.post('/logout', (req,res,next)=>{
   res.json({message: 'ok, logged out, successfully :)'})
 })
 
-router.post('/register', (req, res, next)=>{
+router.get('/register', (req, res, next)=>{
   // search if exists
   User.findOne({where: {email: req.body.email}})
+  .catch(function(err){return next(err)})
   .then(function(user){
     if(user){
       return res.json({message: 'Email used'})
@@ -37,7 +38,9 @@ router.post('/register', (req, res, next)=>{
       User.create({
         email:    req.body.email,
         vhash:    uuid.v4()
-      }).then(function(saved){
+      })
+      .catch(function(err){return next(err)})
+      .then(function(saved){
         res.mailer.send('activation_email', {
           to: saved.email,
           subject: 'Activation',
@@ -56,6 +59,7 @@ router.post('/register', (req, res, next)=>{
 
 router.post('/activation', (req, res, next)=>{
   User.findOne({vhash: req.body.vhash})
+  .catch(function(err){return next(err)})
   .then((user)=>{
     if(!user){ next()}
       user.password = req.body.password
@@ -69,6 +73,7 @@ router.post('/activation', (req, res, next)=>{
 router.post('/forgot', (req,res,next)=>{
   console.log('forgot body', req.body)
   User.findOne({email: req.body.email})
+  .catch(function(err){return next(err)})
   .then((user)=>{
     console.log('user', user)
     if(!user){
@@ -77,7 +82,9 @@ router.post('/forgot', (req,res,next)=>{
     }
     // we did find the user with the email, set hash and send ativation
     user.vhash = uuid.v4()
-    user.save().then(function(saved){
+    user.save()
+    .catch(function(err){return next(err)})
+    .then(function(saved){
       res.mailer.send('activation_email', {
         to: saved.email,
         subject: 'Activation',
