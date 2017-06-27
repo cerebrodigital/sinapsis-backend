@@ -5,18 +5,15 @@
  */
 var md5 = require("blueimp-md5")
 
-var models = require("../models");
+var models = require("../models")
+var mocks = require("../seeds/mocks")
+var post_types = require("../seeds/post_types")
+var vote_types = require("../seeds/vote_types")
+
 
 models.sequelize.sync().then(function () {
-
-  models.User.findOrCreate({where: {email: 'admin@sinapsis.com'}, defaults: {password: 'mafalda'} })
-  .spread((user,created)=>{
-    if(created){
-      console.log('Admin created')
-    } else {
-      console.log("Admin existed")
-    }
-  })
-
+  mocks(models)
+  post_types(models)
+  vote_types(models)
 });
 
