@@ -62,6 +62,7 @@ app.use('/users', usersRouter(models));
 app.use('/auth',  authRouter(models));
 app.use('/posts', postsRouter(models));
 app.use('/post_types', simpleCRUDRouter(models,'PostType'))
+app.use('/vote_types', simpleCRUDRouter(models,'VoteType'))
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

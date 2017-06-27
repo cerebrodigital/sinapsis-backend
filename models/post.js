@@ -7,8 +7,7 @@ module.exports = function(sequelize, DataTypes) {
               primaryKey: true,
               defaultValue: DataTypes.UUIDV4
     },
-    title: DataTypes.STRING,
-    post_type_code: DataTypes.STRING //(link, video, post, img)
+    title: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
