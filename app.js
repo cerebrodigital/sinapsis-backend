@@ -1,57 +1,21 @@
 var express = require('express');
 var path = require('path');
-
+var jwt  = require('jsonwebtoken')
 var logger =       require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser =   require('body-parser');
 var session =      require('express-session')
 var cors    =      require('cors')
+var middleware =   require('./middleware')
 var rootRouter =   require('./routes/root');
 var usersRouter =  require('./routes/users');
 var authRouter =   require('./routes/auth');
 var models  =      require('./models');
 
+var env       = process.env.NODE_ENV || 'development';
+var config    = require(__dirname + '/../config.json')[env];
+
 var User = models.User
-
-var passport = require('passport')
-var LocalStrategy = require('passport-local').Strategy;
-
-passport.use(new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password'
-  },
-  function(email, password, done) {
-    User.findOne({ email: email})
-    .then((user)=>{
-      if (!user){
-        done(null, false, { message: 'Email not found.'})
-      }
-      if(!user.validPassword(password)){
-        done(null, false, { message: 'Incorrect password.'})
-      }
-      done(null, user)
-    })
-    .catch((err)=>{ return done(err) })
-  }
-));
-
-passport.serializeUser(function(user, done) {
-  return done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-
-  User.findOne({id:id})
-  .then((found)=>{
-    return done(null, found)
-  })
-  .catch((err)=>{
-    return done(err)
-  })
-
-});
-
-
 
 var app = express();
 
@@ -68,11 +32,11 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+//app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: 'some secreto' }));
-app.use(passport.initialize());
-app.use(passport.session());
+//app.use(session({ secret: 'some secreto' }));
+//app.use(passport.initialize());
+//app.use(passport.session());
 
 // mailer
 mailer = require('express-mailer');
@@ -84,10 +48,12 @@ mailer.extend(app, {
   port: 465, // port for secure SMTP
   transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
   auth: {
-    user: 'amorx.ink@gmail.com',
-    pass: 'rKngop-df'
+    user: config.gmailuser,
+    pass: config.gmailpassword
   }
 });
+
+app.use(middleware.hasToken());
 
 app.use('/', rootRouter);
 app.use('/users', usersRouter);
