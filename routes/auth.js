@@ -9,7 +9,7 @@ var User = models.User
 
 /* GET users listing. */
 
-router.get('/login', function(req, res, next) {
+router.post('/login', function(req, res, next) {
   let email = req.body.email || req.query.email
   let password = req.body.password || req.query.password
 
