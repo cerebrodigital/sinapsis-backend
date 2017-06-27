@@ -11,6 +11,7 @@ var rootRouter =   require('./routes/root');
 var usersRouter =  require('./routes/users');
 var authRouter =   require('./routes/auth');
 var postsRouter =   require('./routes/posts');
+var simpleCRUDRouter =   require('./routes/simpleCRUD');
 var models  =      require('./models');
 
 var env       = process.env.NODE_ENV || 'development';
@@ -60,7 +61,7 @@ app.use('/',      rootRouter(models));
 app.use('/users', usersRouter(models));
 app.use('/auth',  authRouter(models));
 app.use('/posts', postsRouter(models));
-
+app.use('/post_types', simpleCRUDRouter(models,'PostType'))
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
