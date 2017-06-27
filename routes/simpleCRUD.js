@@ -8,7 +8,7 @@ module.exports = function(models, model){
     models[model].findAll()
     .catch(err => { return next(err) })
     .then(found => {
-      res.json({message: `Got all #{model}`, data: found})
+      res.json({message: `Got all ${model}`, data: found})
     })
   })
 
@@ -18,7 +18,7 @@ module.exports = function(models, model){
     .catch(err => { return next(err) })
     .then(found => {
       if(!found){ return next() }
-      res.json({message: `#{model} id: #{id} found` , data: found})
+      res.json({message: `${model} id: ${id} found` , data: found})
     })
 
   })
@@ -32,7 +32,7 @@ module.exports = function(models, model){
       found.destroy()
       .catch(err => { return next(err) })
       .then(()=>{
-        res.json({message: `#{model} id: #{id} deleted`, data: found})
+        res.json({message: `${model} id: ${id} deleted`, data: found})
       })
     })
 
@@ -45,7 +45,7 @@ module.exports = function(models, model){
     model[model].create(modelparams)
     .catch(err => { return next(err) })
     .then(saved=>{
-      res.json({message: `#{model} id: #{saved.id} created`, data: saved})
+      res.json({message: `${model} id: ${saved.id} created`, data: saved})
     })
   })
 
