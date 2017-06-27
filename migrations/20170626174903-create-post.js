@@ -8,11 +8,11 @@ module.exports = {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4
       },
-      post_type_code: {
+      post_type_id: {
         type: Sequelize.STRING,
         references: {
           model: 'PostTypes',
-          key: 'code'
+          key: 'id'
         }
       },
       user_id: {

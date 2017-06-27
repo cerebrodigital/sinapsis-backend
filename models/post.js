@@ -13,8 +13,8 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Post.hasOne(models.PostType, {
-          foreignKey: "post_type_code",
-          targetKey: "code"
+          foreignKey: "post_type_id",
+          targetKey: "id"
         }),
         Post.hasOne(models.User, {
           foreignKey: "user_id",

@@ -22,6 +22,13 @@ module.exports = {
           key: 'id'
         },
       },
+      post_type_id: {
+        type: Sequelize.STRING,
+        references: {
+          model: 'VoteTypes',
+          key: 'id'
+        }
+      },
       user_id: {
         type: Sequelize.UUID,
         allowNull: false,

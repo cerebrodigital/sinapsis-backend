@@ -1,8 +1,8 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var PostType = sequelize.define('PostType', {
-    name: DataTypes.STRING,
-    code: DataTypes.STRING
+  var VoteType = sequelize.define('VoteType', {
+    code: DataTypes.STRING,
+    name: DataTypes.STRING
   }, {
     timestamps: false,
     classMethods: {
@@ -11,5 +11,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return PostType;
+  return VoteType;
 };

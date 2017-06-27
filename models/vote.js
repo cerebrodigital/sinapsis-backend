@@ -19,6 +19,10 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: "post_id",
           targetKey: "id"
         }),
+        Vote.hasOne(models.VoteType, {
+          foreignKey: "vote_type_id",
+          targetKey: "id"
+        }),
         Vote.hasOne(models.User, {
           foreignKey: "user_id",
           targetKey: "id"
