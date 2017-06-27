@@ -10,10 +10,11 @@ var middleware =   require('./middleware')
 var rootRouter =   require('./routes/root');
 var usersRouter =  require('./routes/users');
 var authRouter =   require('./routes/auth');
+var postsRouter =   require('./routes/posts');
 var models  =      require('./models');
 
 var env       = process.env.NODE_ENV || 'development';
-var config    = require(__dirname + '/../config.json')[env];
+var config    = require(__dirname + '/config/config.json')[env];
 
 var User = models.User
 
@@ -55,9 +56,10 @@ mailer.extend(app, {
 
 app.use(middleware.hasToken());
 
-app.use('/', rootRouter);
-app.use('/users', usersRouter);
-app.use('/auth', authRouter);
+app.use('/',      rootRouter(models));
+app.use('/users', usersRouter(models));
+app.use('/auth',  authRouter(models));
+app.use('/posts', postsRouter(models));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

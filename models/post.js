@@ -8,8 +8,18 @@ module.exports = function(sequelize, DataTypes) {
               defaultValue: DataTypes.UUIDV4
     },
     title: DataTypes.STRING,
-    type: DataTypes.STRING //(link, video, post, img)
-  }, {});
+    post_type_code: DataTypes.STRING //(link, video, post, img)
+  }, {
+    classMethods: {
+      associate: function(models) {
+        Post.hasOne(models.PostType, {
+          foreignKey: "post_type_code",
+          targetKey: "code"
+        })
+      }
+    }
+
+  });
 
   return Post;
 };
