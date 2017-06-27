@@ -2,7 +2,6 @@
 module.exports = {
   up: function(queryInterface, Sequelize) {
     return queryInterface.createTable('PostTypes', {
-
       code: {
         allowNull: false,
         primaryKey: true,
@@ -11,7 +10,6 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       }
-
     });
   },
   down: function(queryInterface, Sequelize) {

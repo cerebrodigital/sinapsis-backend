@@ -1,22 +1,25 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Post = sequelize.define('Post', {
+  var Vote = sequelize.define('Vote', {
     id:       {
               type: DataTypes.UUID,
               allowNull: false,
               primaryKey: true,
               defaultValue: DataTypes.UUIDV4
     },
-    title: DataTypes.STRING,
-    post_type_code: DataTypes.STRING //(link, video, post, img)
+    content: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
-        Post.hasOne(models.PostType, {
-          foreignKey: "post_type_code",
-          targetKey: "code"
+        Vote.hasOne(models.Comment, {
+          foreignKey: "comment_id",
+          targetKey: "id"
         }),
-        Post.hasOne(models.User, {
+        Vote.hasOne(models.Post, {
+          foreignKey: "post_id",
+          targetKey: "id"
+        }),
+        Vote.hasOne(models.User, {
           foreignKey: "user_id",
           targetKey: "id"
         })
@@ -24,6 +27,5 @@ module.exports = function(sequelize, DataTypes) {
     }
 
   });
-
-  return Post;
+  return Vote;
 };

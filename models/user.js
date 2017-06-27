@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     email:    DataTypes.STRING,
     username: DataTypes.STRING,
-    phash: DataTypes.STRING,
+    phash:    DataTypes.STRING,
     vhash:    DataTypes.STRING
   }, {
     setterMethods: {
