@@ -11,7 +11,7 @@ module.exports = {
       post_type_code: {
         type: Sequelize.STRING,
         references: {
-          model: 'PostsType',
+          model: 'PostTypes',
           key: 'code'
         }
       },
