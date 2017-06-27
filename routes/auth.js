@@ -42,7 +42,7 @@ module.exports = function(models){
     res.json({message: 'ok, logged out, successfully :)'})
   })
 
-  router.get('/register', (req, res, next)=>{
+  router.post('/register', (req, res, next)=>{
     // search if exists
     User.findOne({where: {email: req.body.email}})
     .catch(function(err){return next(err)})
@@ -73,14 +73,24 @@ module.exports = function(models){
   })
 
   router.post('/activation', (req, res, next)=>{
-    User.findOne({vhash: req.body.vhash})
+    User.findOne({where: {vhash: req.body.vhash} })
     .catch(function(err){return next(err)})
     .then((user)=>{
       if(!user){ next()}
         user.password = req.body.password
         user.vhash = null
         user.save().then(function(saved){
-          return res.json({message: 'User Activated'})
+          res.mailer.send('welcome_email', {
+            to: saved.email,
+            subject: 'Bienvenido a la comunidad',
+            user:     saved
+          }, function (err){
+            if(err){
+              // handle error
+              return next(err)
+            }
+            return res.json({message: 'Usuario activado'})
+          })
         })
     })
   })
