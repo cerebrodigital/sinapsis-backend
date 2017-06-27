@@ -6,7 +6,10 @@ var md5 = require("blueimp-md5");
 var uuid = require('node-uuid');
 var jwt  = require('jsonwebtoken')
 var User = models.User
+var env       = process.env.NODE_ENV || 'development';
+var config    = require(__dirname + '/../config.json')[env];
 
+console.log("config",config)
 /* GET users listing. */
 
 router.post('/login', function(req, res, next) {
@@ -27,7 +30,7 @@ router.post('/login', function(req, res, next) {
       email: user.email
     }
 
-    let token = jwt.sign(payload, 'some secreto')
+    let token = jwt.sign(payload, config.jwtsecret)
 
     res.json({message: "Authenticated", token: token})
   })

@@ -12,6 +12,9 @@ var usersRouter =  require('./routes/users');
 var authRouter =   require('./routes/auth');
 var models  =      require('./models');
 
+var env       = process.env.NODE_ENV || 'development';
+var config    = require(__dirname + '/../config.json')[env];
+
 var User = models.User
 
 var app = express();
@@ -45,8 +48,8 @@ mailer.extend(app, {
   port: 465, // port for secure SMTP
   transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
   auth: {
-    user: 'amorx.ink@gmail.com',
-    pass: 'rKngop-df'
+    user: config.gmailuser,
+    pass: config.gmailpassword
   }
 });
 
