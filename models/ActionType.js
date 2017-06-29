@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Action = sequelize.define('Action', {
+  var ActionType = sequelize.define('ActionType', {
     id: {
       type: DataTypes.UUID,
       allowNull: false,
@@ -13,5 +13,5 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     timestamps: false
   });
-  return Action;
+  return ActionType;
 };

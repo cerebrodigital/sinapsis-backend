@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var UserAction = sequelize.define('UserAction', {
+  var Action = sequelize.define('Action', {
     id: {
       type: DataTypes.UUID,
       allowNull: false,
@@ -9,10 +9,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     Count:        DataTypes.INTEGER
   });
-  UserAction.associate = function(models) {
-    UserAction.belongsTo(models.User)
-    UserAction.belongsTo(models.Action)
-    UserAction.belongsTo(models.Category)
+  Action.associate = function(models) {
+    Action.belongsTo(models.User)
+    Action.belongsTo(models.Action)
+    Action.belongsTo(models.Category)
   }
-  return UserAction;
+  return Action;
 };

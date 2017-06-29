@@ -7,13 +7,25 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4
     },
-    code: DataTypes.STRING,
-    name: DataTypes.STRING,
+    code: {
+      type:DataTypes.STRING,
+      allowNull: false,
+    },
+    name: {
+      type:DataTypes.STRING,
+      allowNull: false,
+    },
     description: DataTypes.STRING,
-    target_count: DataTypes.INTEGER
+    target_count: {
+      type:DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    }
+  },{
+    timestamps: false
   });
   Achievement.associate = function(models) {
-    Achievement.belongsTo(models.Action, {through: 'AchievementAction'} )
+    Achievement.belongsTo(models.ActionType)
     Achievement.belongsTo(models.Category)
   }
   return Achievement;

@@ -14,8 +14,8 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Badge.associate = function(models) {
-    Badge.belongsToMany(models.Achievement, {through: 'BadgeAchievement'})
-    Badge.belongsToMany(models.Permit, {through: 'BadgePermit'})
+    Badge.belongsToMany(models.Achievement, {through: 'BadgeAchievement', timestamps: false})
+    Badge.belongsToMany(models.Permit, {through: 'BadgePermit', timestamps: false})
   }
   return Badge;
 };
