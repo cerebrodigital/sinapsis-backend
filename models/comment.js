@@ -11,15 +11,15 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Comment.hasOne(Comment, {
+        Comment.belongsTo(Comment, {
           foreignKey: "comment_id",
           targetKey: "id"
         }),
-        Comment.hasOne(models.Post, {
+        Comment.belongsTo(models.Post, {
           foreignKey: "post_id",
           targetKey: "id"
         }),
-        Comment.hasOne(models.User, {
+        Comment.belongsTo(models.User, {
           foreignKey: "user_id",
           targetKey: "id"
         })

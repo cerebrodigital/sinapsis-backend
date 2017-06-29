@@ -1,28 +1,21 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Post = sequelize.define('Post', {
+  var Category = sequelize.define('Category', {
     id:       {
               type: DataTypes.UUID,
               allowNull: false,
               primaryKey: true,
               defaultValue: DataTypes.UUIDV4
     },
-    title: DataTypes.STRING
+    code: DataTypes.STRING,
+    name: DataTypes.STRING
   }, {
+    timestamps: false,
     classMethods: {
       associate: function(models) {
-        Post.hasOne(models.PostType, {
-          foreignKey: "post_type_id",
-          targetKey: "id"
-        }),
-        Post.belongsTo(models.User, {
-          foreignKey: "user_id",
-          targetKey: "id"
-        })
+        // associations can be defined here
       }
     }
-
   });
-
-  return Post;
+  return Category;
 };

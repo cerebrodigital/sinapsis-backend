@@ -1,11 +1,11 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var VoteType = sequelize.define('VoteType', {
-    id:       {
-              type: DataTypes.UUID,
-              allowNull: false,
-              primaryKey: true,
-              defaultValue: DataTypes.UUIDV4
+  var Badge = sequelize.define('Badge', {
+    id: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4
     },
     code: DataTypes.STRING,
     name: DataTypes.STRING
@@ -17,5 +17,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return VoteType;
+  return Badge;
 };
