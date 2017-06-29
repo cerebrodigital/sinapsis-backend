@@ -3,11 +3,11 @@ var md5 = require("blueimp-md5")
 
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
-    id:       {
-              type: DataTypes.UUID,
-              allowNull: false,
-              primaryKey: true,
-              defaultValue: DataTypes.UUIDV4
+    id: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        primaryKey: true,
+        defaultValue: DataTypes.UUIDV4
     },
     email:    DataTypes.STRING,
     username: DataTypes.STRING,
@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
   }
 
   User.associate = function(models) {
-    User.belongsToMany(models.Badge, {through: 'BadgeUser', timestamps: false})
+    User.belongsToMany(models.Badge, {through: 'BadgeUser'})
   }
 
   return User;

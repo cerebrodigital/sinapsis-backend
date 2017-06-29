@@ -25,7 +25,11 @@ module.exports = function(sequelize, DataTypes) {
         })
       }
     }
-
   });
+  Comment.associate = function(models) {
+    Comment.belongsTo(Comment),
+    Comment.belongsTo(models.Post),
+    Comment.belongsTo(models.User)
+  }
   return Comment;
 };

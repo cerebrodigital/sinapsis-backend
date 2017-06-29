@@ -1,28 +1,21 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define('Post', {
-    id:       {
-              type: DataTypes.UUID,
-              allowNull: false,
-              primaryKey: true,
-              defaultValue: DataTypes.UUIDV4
+    id: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4
     },
-    title: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        Post.hasOne(models.PostType, {
-          foreignKey: "post_type_id",
-          targetKey: "id"
-        }),
-        Post.belongsTo(models.User, {
-          foreignKey: "user_id",
-          targetKey: "id"
-        })
-      }
-    }
-
+    title:        DataTypes.STRING,
+    tags:         DataTypes.STRING,
+    description:  DataTypes.STRING,
+    url:          DataTypes.STRING,
   });
-
+  Post.associate = function(models) {
+    Post.belongsTo(models.PostType)
+    Post.belongsTo(models.User)
+    Post.belongsTo(models.Category)
+  }
   return Post;
 };

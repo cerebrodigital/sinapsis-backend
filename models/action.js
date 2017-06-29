@@ -7,16 +7,11 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4
     },
-    code: DataTypes.STRING,
-    name: DataTypes.STRING,
-    desc: DataTypes.STRING
+    code:        DataTypes.STRING,
+    name:        DataTypes.STRING,
+    description: DataTypes.STRING
   }, {
-    timestamps: false,
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
+    timestamps: false
   });
   return Action;
 };
