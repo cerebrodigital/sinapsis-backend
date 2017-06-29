@@ -10,12 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     code: DataTypes.STRING,
     name: DataTypes.STRING
   }, {
-    timestamps: false,
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
+    timestamps: false
   });
   return VoteType;
 };
