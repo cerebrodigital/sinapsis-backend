@@ -2,8 +2,6 @@ var express = require('express');
 
 module.exports = function(models, model){
 
-  let router = express.Router();
-  /* GET all listing. */
   router.get('/', function(req, res, next) {
     models[model].findAll()
     .catch(err => { return next(err) })
@@ -38,10 +36,9 @@ module.exports = function(models, model){
       if(!found){ return next() }
       res.json({message: `${model} id: ${id} found` , data: found})
     })
-
   })
 
-  router.post('/:id', function(req, res, next){
+  router.put('/:id', function(req, res, next){
     let id = req.params.id
     let allowed_columns = models[model].allowed_columns || []
 

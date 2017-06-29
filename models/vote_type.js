@@ -7,15 +7,21 @@ module.exports = function(sequelize, DataTypes) {
               primaryKey: true,
               defaultValue: DataTypes.UUIDV4
     },
-    code: DataTypes.STRING,
-    name: DataTypes.STRING
-  }, {
-    timestamps: false,
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
+    code: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
+
+  }, {
+    timestamps: false
   });
+
+  VoteType.allowed_columns  = ["code","name"]
+  VoteType.required_columns = ["code","name"]
+
   return VoteType;
 };
