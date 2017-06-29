@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: "post_type_id",
           targetKey: "id"
         }),
-        Post.hasOne(models.User, {
+        Post.belongsTo(models.User, {
           foreignKey: "user_id",
           targetKey: "id"
         })
