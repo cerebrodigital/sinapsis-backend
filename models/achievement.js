@@ -16,11 +16,12 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     desc: DataTypes.STRING,
+
     target_count: DataTypes.INTEGER
   });
   Achievement.associate = function(models) {
-    Achievement.belongsToMany(models.User, {through: 'UserAchievement'})
-    Achievement.belongsToMany(models.Badge, {through: 'BadgeAchievement'} )
+    Achievement.belongsTo(models.Action, {through: 'AchievementAction'} )
+    Achievement.belongsTo(models.Category)
   }
   return Achievement;
 };

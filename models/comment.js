@@ -8,23 +8,6 @@ module.exports = function(sequelize, DataTypes) {
               defaultValue: DataTypes.UUIDV4
     },
     content: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        Comment.belongsTo(Comment, {
-          foreignKey: "comment_id",
-          targetKey: "id"
-        }),
-        Comment.belongsTo(models.Post, {
-          foreignKey: "post_id",
-          targetKey: "id"
-        }),
-        Comment.belongsTo(models.User, {
-          foreignKey: "user_id",
-          targetKey: "id"
-        })
-      }
-    }
   });
   Comment.associate = function(models) {
     Comment.belongsTo(Comment),
