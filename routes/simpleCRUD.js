@@ -12,6 +12,24 @@ module.exports = function(models, model){
     })
   })
 
+  router.post('/' , function(req,res,next){
+
+    let required_columns = models[model].required_columns || []
+    let allowed_columns = models[model].allowed_columns || []
+
+    if(!required_columns.every(function(col){req.body[col]})){
+      return res.status(400).json({message: 'missing a required column'})
+    }
+
+    models[model].create(req.body,{
+      fields: allowed_columns
+    })
+    .catch(err => { return next(err) })
+    .then(saved=>{
+      res.json({message: `${model} id: ${saved.id} created`, data: saved})
+    })
+  })
+
   router.get('/:id', function(req, res, next){
     let id = req.params.id
     models[model].findById(id)
@@ -21,6 +39,24 @@ module.exports = function(models, model){
       res.json({message: `${model} id: ${id} found` , data: found})
     })
 
+  })
+
+  router.post('/:id', function(req, res, next){
+    let id = req.params.id
+    let allowed_columns = models[model].allowed_columns || []
+
+    models[model].findById(id)
+    .catch(err => { return next(err) })
+    .then(found => {
+      if(!found){ return next() }
+      found.update(req.body,{
+        fields: allowed_columns
+      })
+      .catch(err => { return next(err) })
+      .then(updated=>{
+        res.json({message: `${model} id: ${id} updated`, data: updated})
+      })
+    })
   })
 
   router.delete('/:id', function(req, res, next){
@@ -38,16 +74,6 @@ module.exports = function(models, model){
 
   })
 
-  router.post('/' , function(req,res,next){
-    // check for allowed columns
-    // check for required columns
-    modelparams = req.body
-    model[model].create(modelparams)
-    .catch(err => { return next(err) })
-    .then(saved=>{
-      res.json({message: `${model} id: ${saved.id} created`, data: saved})
-    })
-  })
 
   return router
 }
