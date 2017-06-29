@@ -17,7 +17,6 @@ module.exports = function(sequelize, DataTypes) {
     setterMethods: {
       password(pass){ this.phash = md5(pass) }
     }
-
   });
 
   User.prototype.validPassword = function(password){
@@ -25,7 +24,8 @@ module.exports = function(sequelize, DataTypes) {
   }
 
   User.associate = function(models) {
-    User.belongsToMany(models.Badge, {through: 'BadgeUser'})
+    User.belongsToMany(models.Badge, {through: 'UserBadge'})
+    User.belongsToMany(models.Achievement, {through: 'UserAchievement'})
   }
 
   return User;

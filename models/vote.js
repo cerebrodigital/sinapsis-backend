@@ -6,8 +6,7 @@ module.exports = function(sequelize, DataTypes) {
               allowNull: false,
               primaryKey: true,
               defaultValue: DataTypes.UUIDV4
-    },
-    content: DataTypes.STRING
+    }
   }, {
     classMethods: {
 
@@ -16,10 +15,10 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Vote.associate = function(models) {
+    Vote.belongsTo(models.User)
     Vote.belongsTo(models.Comment)
     Vote.belongsTo(models.Post)
     Vote.belongsTo(models.VoteType)
-    Vote.belongsTo(models.User)
   }
   return Vote;
 };

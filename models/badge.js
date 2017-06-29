@@ -11,11 +11,11 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING
   }, {
     timestamps: false,
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+
+  Badge.associate = function(models) {
+    Badge.belongsTo(models.User)
+    Badge.belongsTo(models.Achievement)
+  }
   return Badge;
 };
