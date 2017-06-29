@@ -9,13 +9,16 @@ module.exports = function(sequelize, DataTypes) {
     },
     code: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
+      allowNull: false,
+    },
+    description: DataTypes.STRING
   }, {
+    freezeTableName: true,
+    underscored: true,
     timestamps: false
   });
 

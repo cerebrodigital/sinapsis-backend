@@ -8,6 +8,8 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: DataTypes.UUIDV4
     }
   },{
+    freezeTableName: true,
+    underscored: true,
     timestamps: false
   });
   Permit.associate = function(models) {

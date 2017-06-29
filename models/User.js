@@ -9,13 +9,18 @@ module.exports = function(sequelize, DataTypes) {
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4
     },
-    email:    DataTypes.STRING,
+    email:    {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     username: DataTypes.STRING,
     phash:    DataTypes.STRING,
     vhash:    DataTypes.STRING
   }, {
+    freezeTableName: true,
+    underscored: true,
     setterMethods: {
-      password(pass){ this.phash = md5(pass) }
+      password(pass){ this.setDataValue('phash', md5(pass))}
     }
   });
 

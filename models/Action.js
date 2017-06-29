@@ -6,12 +6,15 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4
-    },
-    Count:        DataTypes.INTEGER
+    }
+  },
+  {
+    freezeTableName: true,
+    underscored: true
   });
   Action.associate = function(models) {
     Action.belongsTo(models.User)
-    Action.belongsTo(models.Action)
+    Action.belongsTo(models.ActionType)
     Action.belongsTo(models.Category)
   }
   return Action;

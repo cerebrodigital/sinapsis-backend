@@ -7,7 +7,11 @@ module.exports = function(sequelize, DataTypes) {
               primaryKey: true,
               defaultValue: DataTypes.UUIDV4
     }
-  });
+  },{
+    freezeTableName: true,
+    underscored: true
+  }
+  );
 
   Vote.associate = function(models) {
     Vote.belongsTo(models.User)
