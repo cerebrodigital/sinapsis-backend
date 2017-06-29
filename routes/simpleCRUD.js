@@ -1,7 +1,7 @@
 var express = require('express');
 
 module.exports = function(models, model){
-
+  let router = express.Router();
   router.get('/', function(req, res, next) {
     models[model].findAll()
     .catch(err => { return next(err) })
@@ -70,7 +70,6 @@ module.exports = function(models, model){
     })
 
   })
-
 
   return router
 }
