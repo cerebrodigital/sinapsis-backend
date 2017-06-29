@@ -10,26 +10,16 @@ module.exports = function(sequelize, DataTypes) {
     content: DataTypes.STRING
   }, {
     classMethods: {
-      associate: function(models) {
-        Vote.hasOne(models.Comment, {
-          foreignKey: "comment_id",
-          targetKey: "id"
-        }),
-        Vote.hasOne(models.Post, {
-          foreignKey: "post_id",
-          targetKey: "id"
-        }),
-        Vote.hasOne(models.VoteType, {
-          foreignKey: "vote_type_id",
-          targetKey: "id"
-        }),
-        Vote.hasOne(models.User, {
-          foreignKey: "user_id",
-          targetKey: "id"
-        })
-      }
+
     }
 
   });
+
+  Vote.associate = function(models) {
+    Vote.belongsTo(models.Comment)
+    Vote.belongsTo(models.Post)
+    Vote.belongsTo(models.VoteType)
+    Vote.belongsTo(models.User)
+  }
   return Vote;
 };

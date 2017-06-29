@@ -17,10 +17,15 @@ module.exports = function(sequelize, DataTypes) {
     setterMethods: {
       password(pass){ this.phash = md5(pass) }
     }
+
   });
 
   User.prototype.validPassword = function(password){
     return this.phash === md5(password)
+  }
+
+  User.associate = function(models) {
+    User.belongsToMany(models.Badge, {through: 'BadgeUser', timestamps: false})
   }
 
   return User;
