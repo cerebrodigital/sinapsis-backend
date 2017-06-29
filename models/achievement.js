@@ -9,18 +9,23 @@ module.exports = function(sequelize, DataTypes) {
     },
     code: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    desc: DataTypes.STRING,
-
-    target_count: DataTypes.INTEGER
+    description: DataTypes.STRING,
+    target_count: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    }
+  },{
+    timestamps: false
   });
   Achievement.associate = function(models) {
-    Achievement.belongsTo(models.Action, {through: 'AchievementAction'} )
+    Achievement.belongsTo(models.ActionType)
     Achievement.belongsTo(models.Category)
   }
   return Achievement;
