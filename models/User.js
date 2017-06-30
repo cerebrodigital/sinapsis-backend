@@ -31,6 +31,8 @@ module.exports = function(sequelize, DataTypes) {
   User.associate = function(models) {
     User.belongsToMany(models.Badge, {through: 'UserBadge'})
     User.belongsToMany(models.Achievement, {through: 'UserAchievement'})
+    User.hasOne(models.Profile)
+    User.hasOne(models.RPGProfile)
   }
 
   return User;
