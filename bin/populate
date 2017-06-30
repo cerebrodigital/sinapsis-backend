@@ -4,15 +4,19 @@
  * Module dependencies.
  */
 var models = require("../models")
-var mocks = require("../seeds/mocks")
-var post_types = require("../seeds/post_types")
-var vote_types = require("../seeds/vote_types")
-var actions_types = require("../seeds/action_types")
+
+let seeds = [
+  "mocks",
+  "post_types",
+  "vote_types",
+  "action_types",
+  "categories"
+  ]
+
 
 models.sequelize.sync().then(function () {
-  mocks(models)
-  post_types(models)
-  vote_types(models)
-  action_types(models)
-});
+  seeds.forEach(seed=>{
+    require(`../seeds/${seed}`)(models)
+  })
+})
 
