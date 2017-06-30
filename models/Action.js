@@ -7,11 +7,16 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4
     },
-    Count:        DataTypes.INTEGER
+    ip:         DataTypes.STRING,
+    user_agent: DataTypes.STRING
+  },
+  {
+    freezeTableName: true,
+    underscored: true
   });
   Action.associate = function(models) {
     Action.belongsTo(models.User)
-    Action.belongsTo(models.Action)
+    Action.belongsTo(models.ActionType)
     Action.belongsTo(models.Category)
   }
   return Action;

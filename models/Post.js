@@ -7,10 +7,19 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4
     },
-    title:        DataTypes.STRING,
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     tags:         DataTypes.STRING,
-    description:  DataTypes.STRING,
-    url:          DataTypes.STRING,
+    description:  DataTypes.STRING
+  },{
+    freezeTableName: true,
+    underscored: true
   });
   Post.associate = function(models) {
     Post.belongsTo(models.PostType)

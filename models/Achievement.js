@@ -15,13 +15,15 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: DataTypes.STRING,
     target_count: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0
-    }
+    },
+    description: DataTypes.STRING
   },{
+    freezeTableName: true,
+    underscored: true,
     timestamps: false
   });
   Achievement.associate = function(models) {

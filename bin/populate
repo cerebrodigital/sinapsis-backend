@@ -10,9 +10,8 @@ let seeds = [
   "post_types",
   "vote_types",
   "action_types",
-  "categories"
+  "categories",
   ]
-
 
 models.sequelize.sync().then(function () {
   seeds.forEach(seed=>{

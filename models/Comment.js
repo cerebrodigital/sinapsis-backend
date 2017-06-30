@@ -7,7 +7,13 @@ module.exports = function(sequelize, DataTypes) {
               primaryKey: true,
               defaultValue: DataTypes.UUIDV4
     },
-    content: DataTypes.STRING
+    content: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+  }, {
+    freezeTableName: true,
+    underscored: true
   });
   Comment.associate = function(models) {
     Comment.belongsTo(Comment),

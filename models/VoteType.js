@@ -9,18 +9,21 @@ module.exports = function(sequelize, DataTypes) {
     },
     code: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
+      allowNull: false,
+    },
+    description: DataTypes.STRING
   }, {
+    freezeTableName: true,
+    underscored: true,
     timestamps: false
   });
 
-  VoteType.allowed_columns  = ["code","name"]
-  VoteType.required_columns = ["code","name"]
+  VoteType.allowed_columns  = ["code","name","description"]
+  VoteType.required_columns = ["code","name","description"]
 
   return VoteType;
 };
