@@ -6,7 +6,9 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4
-    }
+    },
+    ip:         DataTypes.STRING,
+    user_agent: DataTypes.STRING
   },
   {
     freezeTableName: true,
