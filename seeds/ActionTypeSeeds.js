@@ -1,6 +1,6 @@
 'use strict';
 var uuid = require('node-uuid');
-module.exports = function(models) {
+module.exports = function(models, cb) {
   models.ActionType.destroy({where: {}, truncate: true})
   .then(()=>{
     models.ActionType.bulkCreate([
@@ -23,6 +23,7 @@ module.exports = function(models) {
       ])
     .spread((affectedCount, affectedRows)=>{
         console.log('Actions created')
+        cb()
     })
   })
 }

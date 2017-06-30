@@ -1,7 +1,7 @@
 'use strict';
 var uuid = require('node-uuid');
 
-module.exports = function(models) {
+module.exports = function(models, cb) {
 
   let categories = [
     { id:uuid.v4(), code: 'humor',    name: 'Humor'},
@@ -15,7 +15,8 @@ module.exports = function(models) {
   .then(()=>{
     models.Category.bulkCreate(categories)
     .spread((affectedCount, affectedRows)=>{
-        console.log('Categories created')
+      console.log('Categories created')
+      cb()
     })
   })
 }

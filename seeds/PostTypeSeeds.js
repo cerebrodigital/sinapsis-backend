@@ -1,6 +1,6 @@
 'use strict';
 var uuid = require('node-uuid');
-module.exports = function(models) {
+module.exports = function(models, cb) {
   models.PostType.destroy({where: {}, truncate: true})
   .then(()=>{
     models.PostType.bulkCreate([
@@ -11,6 +11,7 @@ module.exports = function(models) {
       ])
     .spread((affectedCount, affectedRows)=>{
         console.log('PostType created')
+        cb()
     })
   })
 }

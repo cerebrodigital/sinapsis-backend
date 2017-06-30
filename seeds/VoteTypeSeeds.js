@@ -1,6 +1,6 @@
 'use strict';
 var uuid = require('node-uuid');
-module.exports = function(models) {
+module.exports = function(models, cb) {
   models.VoteType.destroy({where: {}, truncate: true})
   .then(()=>{
     models.VoteType.bulkCreate([
@@ -9,6 +9,7 @@ module.exports = function(models) {
       ])
     .spread((affectedCount, affectedRows)=>{
         console.log('VoteType created')
+        cb()
     })
   })
 }

@@ -1,21 +1,24 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies.
- */
 var models = require("../models")
 
 let seeds = [
-  "mocks",
-  "post_types",
-  "vote_types",
-  "action_types",
-  "categories",
+  "User",
+  "PostType",
+  "VoteType",
+  "Category",
+  "ActionType"
   ]
 
-models.sequelize.sync().then(function () {
-  seeds.forEach(seed=>{
-    require(`../seeds/${seed}`)(models)
-  })
-})
+seedAll= function(seeds){
+  if(seeds.length){
+    let seed = seeds.shift()
+    require(`../seeds/${seed}Seeds`)(models,function(){seedAll(seeds)})
+  }else{
+    console.log("Seeds Ended!!! ")
+  }
+}
 
+models.sequelize.sync().then(function () {
+  seedAll(seeds)
+})
