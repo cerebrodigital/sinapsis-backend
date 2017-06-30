@@ -22,8 +22,8 @@ module.exports = function(sequelize, DataTypes) {
     timestamps: false
   });
 
-  VoteType.allowed_columns  = ["code","name"]
-  VoteType.required_columns = ["code","name"]
+  VoteType.allowed_columns  = ["code","name","description"]
+  VoteType.required_columns = ["code","name","description"]
 
   return VoteType;
 };
