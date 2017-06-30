@@ -33,6 +33,11 @@ module.exports = function(sequelize, DataTypes) {
     User.belongsToMany(models.Achievement, {through: 'UserAchievement'})
     User.hasOne(models.Profile)
     User.hasMany(models.CategoryProfile)
+    User.hook('afterCreate', (user, options) => {
+      models.Profile.create({}).then(profile =>
+        user.setProfile(profile)
+      )
+    })
   }
 
   User.allowed_columns  = ["email","username"]
