@@ -32,7 +32,9 @@ module.exports = function(sequelize, DataTypes) {
     User.belongsToMany(models.Badge, {through: 'UserBadge'})
     User.belongsToMany(models.Achievement, {through: 'UserAchievement'})
     User.hasOne(models.Profile)
+    User.hasMany(models.CategoryProfile)
   }
 
+  User.allowed_columns  = ["email","username"]
   return User;
 };
