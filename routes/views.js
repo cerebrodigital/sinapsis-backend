@@ -5,14 +5,15 @@ var middleware = require('../middleware')
 module.exports = function(models){
   let router = express.Router();
   router.get('/', function(req, res, next) {
-    res.render('landing', { title: 'Home' , user: req.user});
+    res.render('landing', { title: 'Home' , flash: req.flash,  user: req.user});
   });
 
   router.get('/login', function(req, res, next) {
     if(req.user){
-      res.redirect('/?token=')
+      res.redirect('/')
     }else{
-      res.render('auth/login', { title: 'Conectar' });
+      //console.log('flash', req.flash('error'))
+      res.render('auth/login', { title: 'Conectar', flash_errors: req.flash('error')});
     }
   });
 

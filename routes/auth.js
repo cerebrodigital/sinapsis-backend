@@ -52,7 +52,7 @@ module.exports = function(models){
               // handle error
               console.log(err)
             }
-            req.flash( 'info', 'Email sent')
+            req.flash('info', 'Email sent')
             res.redirect('/login')
           })
         })

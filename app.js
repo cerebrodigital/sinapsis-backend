@@ -37,12 +37,12 @@ passport.use(new LocalStrategy({
     .catch((err)=>{ return done(err) })
     .then((user)=>{
       if (!user){
-        done(null, false, { message: 'Email not found.'})
+        return done(null, false, { message: 'Email not found.'})
       }
       if(!user.validPassword(password)){
-        done(null, false, { message: 'Incorrect password.'})
+        return done(null, false, { message: 'Incorrect password.'})
       }
-      done(null, user)
+      return done(null, user)
     })
   }
 ));
