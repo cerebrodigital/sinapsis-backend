@@ -13,7 +13,7 @@ module.exports = function(models){
       res.redirect('/')
     }else{
       //console.log('flash', req.flash('error'))
-      res.render('auth/login', { title: 'Conectar', flash_errors: req.flash('error')});
+      res.render('auth/login', { title: 'Conectar', flash_errors: req.flash('error'), flash_success: req.flash('success'), flash_warnings: req.flash('warning'), flash_infos: req.flash('info')});
     }
   });
 

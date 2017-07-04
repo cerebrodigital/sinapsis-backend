@@ -15,9 +15,15 @@ html
 
 
   script var flash_errors = !{flash_errors?JSON.stringify(flash_errors):false}
+  script var flash_success = !{flash_success?JSON.stringify(flash_success):false}
+  script var flash_warnings = !{flash_warnings?JSON.stringify(flash_warnings):false}
+  script var flash_infos = !{flash_infos?JSON.stringify(flash_infos):false}
 
   script.
     flash_errors.forEach(flash.error)
+    flash_success.forEach(flash.success)
+    flash_warnings.forEach(flash.warning)
+    flash_infos.forEach(flash.info)
 
   body
     include partials/nav.pug
