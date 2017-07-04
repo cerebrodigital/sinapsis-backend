@@ -1,0 +1,71 @@
+extends layout
+
+block head-scripts
+  link(href='/css/search.css', rel='stylesheet')
+
+
+block bottom-scripts
+  script(src="/js/search.js")
+
+block content
+  .container
+    .row
+      br
+      br
+      form#togglingForm.form-horizontal(method='post')
+        .form-group
+          .col-xs-9
+            input.form-control(type='text', name='company', required='',placeholder="keyword", data-fv-notempty-message='The company name is required')
+            br
+            label.radio-inline Filtrar búsqueda de actividades por:  
+            label.radio-inline
+              input(type='checkbox', name='rating', value='terrible', checked='checked')
+              |  Posts
+            label.radio-inline
+              input(type='checkbox', name='rating', value='terrible')
+              |  Comentarios
+            label.radio-inline
+              input(type='checkbox', name='rating', value='terrible')
+              |  Votos
+          .col-xs-2
+            button.btn.btn-success(type='button', data-toggle='#jobInfo') BUSCAR
+  .container
+    .row
+      h2 Resultados de la Búsqueda: "keyword" 
+        .activity-feed
+          .feed-item
+            .date POST - por: yadaxim, fecha: 2/10/2017
+            img(style='float:left', src='http://lorempixel.com/50/50/city/')
+            .text
+              a(href='single-need.php') Título de la publicación  
+              |  “Un pequeño resumen de los primeros textos de la nota que se publico para dar un entendido. es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500 es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500”
+          .feed-item
+            .date Comentario - por: rodvan, fecha: 3/10/2017
+            .text
+              | Agregado en “
+              a(href='#') Volunteer Activities
+              | ”  dice: "Hola no entiendo esta publicación, donde estan las fuentes?"
+          .feed-item
+            .date POST - por: yadaxim, fecha: 2/10/2017
+            img(style='float:left', src='http://lorempixel.com/50/50/animals/')
+            .text
+              a(href='single-need.php') Esta otra es una publicación de los 10 animales mas...  
+              |  “Un pequeño resumen de los primeros textos de la nota que se publico para dar un entendido. es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500 es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500”
+          .feed-item
+            .date POST - por: rodvan, fecha: 2/10/2017
+            img(style='float:left', src='http://lorempixel.com/50/50/people/')
+            .text
+              a(href='single-need.php') Esta es una publicación de los 10 humanos que mas..  
+              |  “Un pequeño resumen de los primeros textos de la nota que se publico para dar un entendido. es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500 es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500”
+          .feed-item
+            .date Comentario - por: rodvan, fecha: 3/10/2017
+            .text
+              | Agregado en “
+              a(href='#') Volunteer Activities
+              | ”  dice: "Hola no entiendo esta publicación, donde estan las fuentes?"
+          .feed-item
+            .date Comentario - por: rodvan, fecha: 3/10/2017
+            .text
+              | Agregado en “
+              a(href='#') Volunteer Activities
+              | ”  dice: "Hola no entiendo esta publicación, donde estan las fuentes?"

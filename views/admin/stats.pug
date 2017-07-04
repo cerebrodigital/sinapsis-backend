@@ -1,0 +1,178 @@
+extends ../layout
+block head-scripts
+  link(rel='stylesheet', href='/css/profile.css')
+  link(href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css', rel='stylesheet')
+  link(href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css', rel='stylesheet')
+block bottom-scripts
+  script(src="/js/profile.js")
+block content 
+  .container.profile
+    .row
+      .span12
+        .well.well-small.clearfix
+          .row-fluid
+            .span2
+              img.img-polaroid(src='http://www.gravatar.com/avatar/f6112e781842d6a2b4636b35451401ff?s=125')
+            .span4
+              h2 Hola Admin __________
+              ul.unstyled
+                li
+                  b tus datos: 
+                  |  El lord de la Biología
+                li
+                  b contacto:
+                  |  jonniespratley@me.com
+                li
+                  b website:
+                  |  http://jonniespratley.me
+            .span6
+              ul.inline.stats
+                li
+                  span 27
+                  |                  Level
+                li
+                  span 2,444
+                  |                  Créditos
+                li
+                  span 35,334
+                  |                  Experiencia
+                li
+                  span 186
+                  |                  Seguidores
+              
+  .container.target
+    br
+    .row
+      .col-sm-3
+        // left col
+        ul.list-group
+          li.list-group-item.text-muted(contenteditable='false') Perfil
+          li.list-group-item.text-right
+            span.pull-left
+              strong Users totales:
+            |  34,330
+          li.list-group-item.text-right
+            span.pull-left
+              strong Última actividad
+            |  hoy 12:34:22 - usuario: maria2221
+          li.list-group-item.text-right
+            span.pull-left
+              strong Usuarios el día de hoy:
+            |  245
+          li.list-group-item.text-right
+            span.pull-left
+              strong Usuarios de la semana: 
+            |  2,340
+          li.list-group-item.text-right
+            span.pull-left
+              strong Usuarios del mes: 
+            |  12,340
+        .panel.panel-default
+          .panel-heading
+            | Categorias Estadisticas
+          li.list-group-item.text-right
+            span.pull-left
+              strong Top Categoría más frecuentadas:
+            |  Astronomía, Medicina, Biología, Física, Matemáticas.
+          li.list-group-item.text-right
+            span.pull-left
+              strong Categoría con más interes:
+            |  Biología, Etc
+          li.list-group-item.text-right
+            span.pull-left
+              strong Query específico: 
+            |  resultados aqui
+          li.list-group-item.text-right
+            span.pull-left
+              strong Otro Query especiífico: 
+            |  resultados aqui
+            
+        .panel.panel-default
+          .panel-heading
+            | Posts totales 
+            i.fa.fa-link.fa-1x
+          li.list-group-item.text-muted
+            | Actividad en General 
+            i.fa.fa-dashboard.fa-1x
+          li.list-group-item.text-right
+            span.pull-left
+              strong Posts
+            |  1,225
+          li.list-group-item.text-right
+            span.pull-left
+              strong Votos
+            |  13,221
+          li.list-group-item.text-right
+            span.pull-left
+              strong Comentarios
+            |  370
+          li.list-group-item.text-right
+            span.pull-left
+              strong Puntos Generados
+            |  7873
+        ul.list-group
+          
+      // /col-3
+      .col-sm-9(style='', contenteditable='false')
+        .panel.panel-default
+          .panel-heading Información y eventos de admins
+          .panel-body
+            | Quizá aquí puede haber una lista o notas que dejemos los administradores para poder informarnos de lo que sucede dentro. Alertas, etc..
+            .alert.alert-success.alert-dismissable
+              a.close(href='#', data-dismiss='alert', aria-label='close') ×
+              strong NOTA!
+              |  Hola, esta semana se acepto a un nuevo moderador llamado ___ debido a que llego al lvl 30 antes que otro usuario e hizo la solicitud. ¿Qué opinan?.
+        .panel.panel-default.target
+          .panel-heading(contenteditable='false') CHAT ENTRE ADMINS
+          .panel-body
+            | Aqui podemos incluir un mibbit para comenzar, conectarnos a Freenode en el IRC
+            iframe(src='https://kiwiirc.com/client/irc.freenode.org/?nick=neurona|?#cerebrodigital', style='border:0; width:100%; height:450px;')
+        .panel.panel-default.target
+          .panel-heading(contenteditable='false') Últimas Acciones GLOBALES
+          .panel-body
+            .row
+              .col-md-12
+                // Nav tabs
+                ul.nav.nav-tabs
+                  li.active
+                    a(href='#comentarios', data-toggle='tab')
+                      span.glyphicon.glyphicon-inbox
+                      | Comentarios Globales
+                  li
+                    a(href='#votos', data-toggle='tab')
+                      span.glyphicon.glyphicon-user
+                      | Votos Globales
+                  li
+                    a(href='#messages', data-toggle='tab')
+                      span.glyphicon.glyphicon-tags
+                      | Top Usuarios Globales
+                  li
+                    a(href='#settings', data-toggle='tab')
+                      span.glyphicon.glyphicon-plus.no-margin
+                // Tab panes
+                .tab-content
+                  #comentarios.tab-pane.fade.in.active
+                    .list-group
+                      a.list-group-item(href='#')
+                        span Post Source from Comment
+                        span.text-muted(style='font-size: 11px;') - Este es un comentario preuba largo para ver como se ve por aqui ?
+                        span.badge 12:56 AM
+                        span.pull-right
+                      a.list-group-item(href='#')
+                        span Another Post Title Source
+                        span.text-muted(style='font-size: 11px;') - Hi hello how r u ?
+                        span.badge 12:40 AM
+                        span.pull-right
+                      a.list-group-item.read(href='#')
+                        span Another News
+                        span.text-muted(style='font-size: 11px;') - Hi hello how r u ?
+                        span.badge 12:15 AM
+                        span.pull-right
+                  #votos.tab-pane.fade.in
+                    .list-group
+                      .list-group-item
+                        span.text-center Esta otra esta vacia
+                  #messages.tab-pane.fade.in
+                    | ...
+                  #settings.tab-pane.fade.in
+                    | Esta tab esta vacia

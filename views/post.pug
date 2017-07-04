@@ -1,0 +1,105 @@
+extends layout
+
+block head-scripts
+  link(href='/css/publish.css', rel='stylesheet')
+
+
+block bottom-scripts
+  script(src="/js/publish.js")
+
+block content
+  // Main jumbotron for a primary marketing message or call to action
+  .container
+    // Example row of columns
+    .row
+      .col-sm-6.col-md-8
+        .panel.panel-default
+          .panel-body
+            h3 Los 10 virus más letales de la historia humana.
+            p
+              | Tags: 
+              a(href='#')
+                span.label.label-info Snipp
+              a(href='#')
+                span.label.label-info Bootstrap
+              a(href='#')
+                span.label.label-info UI
+              a(href='#')
+                span.label.label-info growth
+              |   
+              i.icon-user
+              a(href='#') por rodvaN
+              |   
+              i.icon-calendar
+              |  Sept 16th, 2012 a 4:20 pm
+              |   
+              i.icon-comment
+              a(href='#') 3 Comentarios
+              |     
+              i.icon-share
+                | 12,332 vistas
+            hr
+            
+            .row
+              .col-lg-6
+                p
+                  | Entrepreneurs are generally perceived as insane risk-takers. A surreal combination of Wolverine and Batman. Aggressive, yet calm, intuitive, yet rational and reckless and brave at the same time. But here’s the moot question: if only five per cent of  entrepreneurs end up working on their original idea, only two per cent entrepreneurs end up providing value and only 0.5 per cent see monetary success, how should this dream really be pursued?
+              .col-lg-6
+                p
+                  img(alt='image', src='http://lorempixel.com/200/150/people', width='100%')
+            br
+            .row
+              .col-lg-12
+                p
+                  strong Jump off the cliff without a rope
+                p
+                  | In the movie The Dark Knight Rises, superhero Batman learns that you can go full throttle only when there is no back-up. Entrepreneurship teaches you to put all your eggs, fruits, hair-dryer, mobile phone and everything else into one basket. If you have a back-up, it’s you who has failed and not your startup. In any case, unless you took unreasonable risks while pursuing your startup, dealing with its failure will be an unpleasant and a ridiculously boring affair. It’s more like a step along the journey.
+            br
+            .row
+              .col-lg-12
+                p
+                  strong It’s about the journey, not the destination
+                p
+                  | As a startup, people will ask you “Where do you see yourself five years from now?”, while you are still figuring out which client will be paying for your next lunch. In a startup, you learn. You learn to react to insulting situations, uncomfortable questions and demeaning feedback. In a startup, you build, modify, test, rinse and repeat. It’s an incremental and agile perspective towards life. You will never want it to end. It’s addictive.
+            br
+            .row
+              .col-lg-12
+                p
+                  strong The outcome is not binary
+                p
+                  | Chances are that you will not become billionaire. But chances also are that you may not end up on the street begging. There are millions of shades of grey between black and white, there are infinite rational numbers between 0 and 1 and, there are millions of outcomes possible when you have a startup. It’s scary, yes! But it’s even more exciting. That fear of uncertainty, that feeling of not knowing the outcome, that thought process when you are not in control of everything; there are very few things which can trigger such emotions. They are so rare, the English dictionary has no words for them!
+            br
+            .row
+
+      .col-sm-6.col-md-4
+        br
+        .well.well-sm
+          .media
+            a.thumbnail.pull-left(href='#')
+              img.media-object(src='http://lorempixel.com/70/70/people/')
+            .media-body
+              h4.media-heading Yadaxim
+              h5  Masternauta de Sinapsis
+              p
+                span.label.label-info level 12 
+                span.label.label-warning 2,300 créditos
+                br
+                span.label.label-success +53 rep
+                span.label.label-danger 1 energy
+              h5 badges más importantes
+              img(src="http://i.imgur.com/xGzGb7L.png", width="100%")
+              p
+                a.btn.btn-xs.btn-default(href='#')
+                  span.glyphicon.glyphicon-comment
+                  |  Ver perfil
+                a.btn.btn-xs.btn-default(href='#')
+                  span.glyphicon.glyphicon-heart
+                  |  Mensajear
+                a.btn.btn-xs.btn-default(href='#')
+                  span.glyphicon.glyphicon-ban-circle
+                  |  Seguir
+        img(src='https://content.screencast.com/users/r0dvan/folders/Snagit/media/a548311f-f879-40d0-9a4d-e9837ea19dd0/2017-06-28_18-21-38.png')
+      .container
+        .row
+          .col-sm-6.col-md-8
+            include partials/comments.pug

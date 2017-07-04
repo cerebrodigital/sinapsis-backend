@@ -1,0 +1,33 @@
+extends ../layout
+block head-scripts
+  link(rel='stylesheet', href='/css/login.css')
+block bottom-scripts
+  script(src="/js/activation.js")
+  
+block content
+  .container
+    .omb_login
+      h3.omb_authTitle
+        | Estas activando tu cuenta
+      .row.omb_row-sm-offset-3.omb_loginOr
+        .col-xs-12.col-sm-6
+          span Por favor digita la contraseña que deseas usar:
+      .row.omb_row-sm-offset-3
+        .col-xs-12.col-sm-6
+          form#activation.omb_loginForm(action='', autocomplete='off', method='POST')
+            .input-group
+              span.input-group-addon
+                i.fa.fa-user
+              input.form-control(type='password', name='password', placeholder='Escribe tu contraseña')
+            .input-group
+              span.input-group-addon
+                i.fa.fa-user
+              input.form-control(type='password', name='password-repeat', placeholder='Repite tu contraseña')
+            span.help-block
+            .input-group
+              span.input-group-addon
+                i.fa.fa-lock
+              input.form-control(type='text', name='vhash', placeholder='Vhash' , value=vhash)
+            br
+            //span.help-block Password error
+            button.btn.btn-lg.btn-primary.btn-block(type='submit') Establecer contraseña

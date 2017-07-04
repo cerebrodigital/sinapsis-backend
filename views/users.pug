@@ -1,0 +1,244 @@
+extends layout
+
+block head-scripts
+  link(href='/css/users.css', rel='stylesheet')
+
+
+block bottom-scripts
+  script(src="/js/users.js")
+
+block content
+  hr
+  .container
+    .row
+      .col-md-12
+        #adv-search.input-group
+          input.form-control(type='text', placeholder='Search for snippets')
+          .input-group-btn
+            .btn-group(role='group')
+              .dropdown.dropdown-lg
+                button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='false')
+                  span.caret
+                .dropdown-menu.dropdown-menu-right(role='menu')
+                  form.form-horizontal(role='form')
+                    .form-group
+                      label(for='filter') Filtrar por
+                      select.form-control
+                        option(value='0', selected='') Todos
+                        option(value='1') Los más destacados
+                        option(value='2') Más populares
+                        option(value='3') Más calificados
+                        option(value='4') Los que más comentan
+                    .form-group
+                      label(for='filter') Los más activos de Categoría
+                      select.form-control
+                        option(value='0', selected='') Todos
+                        option(value='1') Biología
+                        option(value='2') Matemáticas
+                        option(value='3') Física
+                        option(value='4') Hardware
+                    .form-group
+                      label(for='contain') Con las siguientes descripciones
+                      input.form-control(type='text')
+                    button.btn.btn-primary(type='submit')
+                      span.glyphicon.glyphicon-search(aria-hidden='true') Buscar 
+              button.btn.btn-primary(type='button')
+                span.glyphicon.glyphicon-search(aria-hidden='true')
+  hr
+  .container
+    .row
+      .col-md-12
+        .title
+          span Listado de todos los usuarios, asegurate de filtrar para navegar rápido
+        .col-sm-4.col-md-2.box-user-outer
+          .box-user
+            .img-wrapper
+              a(href='detail.html')
+                img(alt='user', src='https://bootdey.com/img/Content/avatar/avatar1.png')
+              .tags
+                span.label-tags
+                  span.label.label-danger nivel 12
+                span.label-tags
+                  span.label.label-info 2,344 créditos
+                span.label-tags
+                  span.label.label-warning biología, naturaleza
+              .option
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Add to Cart')
+                  i.ace-icon.fa.fa-shopping-cart
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Compare')
+                  i.ace-icon.fa.fa-align-left
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Wishlist')
+                  i.ace-icon.fa.fa-heart
+            h6
+              a(href='#') Juan Perez
+              div
+                | username:  juanp
+              small Hola me gusta lo que funciona asi y luego ver que todo este meor
+        .col-sm-4.col-md-2.hidden-xs.box-user-outer
+          .box-user
+            .img-wrapper
+              a(href='detail.html')
+                img(alt='user', src='https://bootdey.com/img/Content/avatar/avatar6.png')
+              .tags
+                span.label-tags
+                  span.label.label-danger nivel 12
+                span.label-tags
+                  span.label.label-info 2,344 créditos
+                span.label-tags
+                  span.label.label-warning biología, naturaleza
+              .option
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Add to Cart')
+                  i.ace-icon.fa.fa-shopping-cart
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Compare')
+                  i.ace-icon.fa.fa-align-left
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Wishlist')
+                  i.ace-icon.fa.fa-heart
+            h6
+              a(href='#') Juan Perez
+              div
+                | username:  juanp
+              small Hola me gusta lo que funciona asi y luego ver que todo este meor
+        .col-sm-4.col-md-2.hidden-xs.box-user-outer
+          .box-user
+            .img-wrapper
+              a(href='detail.html')
+                img(alt='user', src='https://bootdey.com/img/Content/avatar/avatar3.png')
+              .tags
+                span.label-tags
+                  span.label.label-danger nivel 12
+                span.label-tags
+                  span.label.label-info 2,344 créditos
+                span.label-tags
+                  span.label.label-warning biología, naturaleza
+              .option
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Add to Cart')
+                  i.ace-icon.fa.fa-shopping-cart
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Compare')
+                  i.ace-icon.fa.fa-align-left
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Wishlist')
+                  i.ace-icon.fa.fa-heart
+            h6
+              a(href='#') Juan Perez
+              div
+                | username:  juanp
+              small Hola me gusta lo que funciona asi y luego ver que todo este meor
+        .col-sm-4.col-md-2.hidden-sm.hidden-xs.box-user-outer
+          .box-user
+            .img-wrapper
+              a(href='detail.html')
+                img(alt='user', src='https://bootdey.com/img/Content/avatar/avatar5.png')
+              .tags
+                span.label-tags
+                  span.label.label-danger nivel 12
+                span.label-tags
+                  span.label.label-info 2,344 créditos
+                span.label-tags
+                  span.label.label-warning biología, naturaleza
+              .option
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Add to Cart')
+                  i.ace-icon.fa.fa-shopping-cart
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Compare')
+                  i.ace-icon.fa.fa-align-left
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Wishlist')
+                  i.ace-icon.fa.fa-heart
+            h6
+              a(href='#') Juan Perez
+              div
+                | username:  juanp
+              small Hola me gusta lo que funciona asi y luego ver que todo este meor
+        .col-sm-4.col-md-2.box-user-outer
+          .box-user
+            .img-wrapper
+              a(href='detail.html')
+                img(alt='user', src='https://bootdey.com/img/Content/avatar/avatar6.png')
+              .tags
+                span.label-tags
+                  span.label.label-danger nivel 12
+                span.label-tags
+                  span.label.label-info 2,344 créditos
+                span.label-tags
+                  span.label.label-warning biología, naturaleza
+              .option
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Add to Cart')
+                  i.ace-icon.fa.fa-shopping-cart
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Compare')
+                  i.ace-icon.fa.fa-align-left
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Wishlist')
+                  i.ace-icon.fa.fa-heart
+            h6
+              a(href='#') Juan Perez
+              div
+                | username:  juanp
+              small Hola me gusta lo que funciona asi y luego ver que todo este meor
+        .col-sm-4.col-md-2.hidden-xs.box-user-outer
+          .box-user
+            .img-wrapper
+              a(href='detail.html')
+                img(alt='user', src='https://bootdey.com/img/Content/avatar/avatar5.png')
+              .tags
+                span.label-tags
+                  span.label.label-danger nivel 12
+                span.label-tags
+                  span.label.label-info 2,344 créditos
+                span.label-tags
+                  span.label.label-warning biología, naturaleza
+              .option
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Add to Cart')
+                  i.ace-icon.fa.fa-shopping-cart
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Compare')
+                  i.ace-icon.fa.fa-align-left
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Wishlist')
+                  i.ace-icon.fa.fa-heart
+            h6
+              a(href='#') Juan Perez
+              div
+                | username:  juanp
+              small Hola me gusta lo que funciona asi y luego ver que todo este meor
+        .col-sm-4.col-md-2.hidden-xs.box-user-outer
+          .box-user
+            .img-wrapper
+              a(href='detail.html')
+                img(alt='user', src='https://bootdey.com/img/Content/avatar/avatar3.png')
+              .tags
+                span.label-tags
+                  span.label.label-danger nivel 12
+                span.label-tags
+                  span.label.label-info 2,344 créditos
+                span.label-tags
+                  span.label.label-warning biología, naturaleza
+              .option
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Add to Cart')
+                  i.ace-icon.fa.fa-shopping-cart
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Compare')
+                  i.ace-icon.fa.fa-align-left
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Wishlist')
+                  i.ace-icon.fa.fa-heart
+            h6
+              a(href='#') Juan Perez
+              div
+                | username:  juanp
+              small Hola me gusta lo que funciona asi y luego ver que todo este meor
+        .col-sm-4.col-md-2.hidden-sm.hidden-xs.box-user-outer
+          .box-user
+            .img-wrapper
+              a(href='detail.html')
+                img(alt='user', src='https://bootdey.com/img/Content/avatar/avatar1.png')
+              .tags
+                span.label-tags
+                  span.label.label-danger nivel 12
+                span.label-tags
+                  span.label.label-info 2,344 créditos
+                span.label-tags
+                  span.label.label-warning biología, naturaleza
+              .option
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Add to Cart')
+                  i.ace-icon.fa.fa-shopping-cart
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Compare')
+                  i.ace-icon.fa.fa-align-left
+                a(href='#', data-toggle='tooltip', data-placement='bottom', title='', data-original-title='Wishlist')
+                  i.ace-icon.fa.fa-heart
+            h6
+              a(href='#') Juan Perez
+              div
+                | username:  juanp
+              small Hola me gusta lo que funciona asi y luego ver que todo este meor

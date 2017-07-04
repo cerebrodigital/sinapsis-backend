@@ -1,0 +1,249 @@
+.post-comments
+  form
+    .form-group
+      label(for='comment') Your Comment
+      textarea.form-control(name='comment', rows='3')
+    button.btn.btn-default(type='submit') Send
+  .comments-nav
+    ul.nav.nav-pills
+      li.dropdown(role='presentation')
+        a.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false')
+          | there are 2593 comments 
+          span.caret
+        ul.dropdown-menu
+          li
+            a(href='#') Best
+          li
+            a(href='#') Hot
+  .row
+    .media
+      // first comment
+      .media-heading
+        button.btn.btn-default.btn-xs(type='button', data-toggle='collapse', data-target='#collapseOne', aria-expanded='false', aria-controls='collapseExample')
+          span.glyphicon.glyphicon-minus(aria-hidden='true')
+        span.label.label-info 12314
+        |  terminator 12 hours ago
+      #collapseOne.panel-collapse.collapse.in
+        .media-left
+          .vote-wrap
+            .save-post
+              a(href='#')
+                span.glyphicon.glyphicon-star(aria-label='Save')
+            .vote.up
+              i.glyphicon.glyphicon-menu-up
+            .vote.inactive
+              i.glyphicon.glyphicon-menu-down
+          // vote-wrap
+        // media-left
+        .media-body
+          p
+            | yazmayın artık amk, görmeyeyim sol framede. insan bi meraklanıyor, ümitleniyor. sonra yine özlem dolu yazıları görüp hayal kırıklığıyla okuyorum.
+          .comment-meta
+            span
+              a(href='#') delete
+            span
+              a(href='#') report
+            span
+              a(href='#') hide
+            span
+              a(role='button', data-toggle='collapse', href='#replyCommentT', aria-expanded='false', aria-controls='collapseExample') reply
+            #replyCommentT.collapse
+              form
+                .form-group
+                  label(for='comment') Your Comment
+                  textarea.form-control(name='comment', rows='3')
+                button.btn.btn-default(type='submit') Send
+          // comment-meta
+          .media
+            // answer to the first comment
+            .media-heading
+              button.btn.btn-default.btn-collapse.btn-xs(type='button', data-toggle='collapse', data-target='#collapseTwo', aria-expanded='false', aria-controls='collapseExample')
+                span.glyphicon.glyphicon-minus(aria-hidden='true')
+              span.label.label-info 12314
+              |  vertu 12 sat once yazmis
+            #collapseTwo.panel-collapse.collapse.in
+              .media-left
+                .vote-wrap
+                  .save-post
+                    a(href='#')
+                      span.glyphicon.glyphicon-star(aria-label='Save')
+                  .vote.up
+                    i.glyphicon.glyphicon-menu-up
+                  .vote.inactive
+                    i.glyphicon.glyphicon-menu-down
+                // vote-wrap
+              // media-left
+              .media-body
+                p
+                  | yazmayın artık amk, görmeyeyim sol framede. insan bi meraklanıyor, ümitleniyor. sonra yine özlem dolu yazıları görüp hayal kırıklığıyla okuyorum.
+                .comment-meta
+                  span
+                    a(href='#') delete
+                  span
+                    a(href='#') report
+                  span
+                    a(href='#') hide
+                  span
+                    a(role='button', data-toggle='collapse', href='#replyCommentThree', aria-expanded='false', aria-controls='collapseExample') reply
+                  #replyCommentThree.collapse
+                    form
+                      .form-group
+                        label(for='comment') Your Comment
+                        textarea.form-control(name='comment', rows='3')
+                      button.btn.btn-default(type='submit') Send
+                // comment-meta
+            // comments
+          // answer to the first comment
+      // comments
+    // first comment
+    .media
+      // first comment
+      .media-heading
+        button.btn.btn-default.btn-xs(type='button', data-toggle='collapse', data-target='#collapseThree', aria-expanded='false', aria-controls='collapseExample')
+          span.glyphicon.glyphicon-minus(aria-hidden='true')
+        span.label.label-info 12314
+        |  vertu 12 sat once yazmis
+      #collapseThree.panel-collapse.collapse.in
+        .media-left
+          .vote-wrap
+            .save-post
+              a(href='#')
+                span.glyphicon.glyphicon-star(aria-label='Kaydet')
+            .vote.up
+              i.glyphicon.glyphicon-menu-up
+            .vote.inactive
+              i.glyphicon.glyphicon-menu-down
+          // vote-wrap
+        // media-left
+        .media-body
+          p
+            | yazmayın artık amk, görmeyeyim sol framede. insan bi meraklanıyor, ümitleniyor. sonra yine özlem dolu yazıları görüp hayal kırıklığıyla okuyorum.
+          .comment-meta
+            span
+              a(href='#') sil
+            span
+              a(href='#') kaydet
+            span
+              a(href='#') sikayer et
+            span
+              a(role='button', data-toggle='collapse', href='#replyCommentFour', aria-expanded='false', aria-controls='collapseExample') cevapla
+            #replyCommentFour.collapse
+              form
+                .form-group
+                  label(for='comment') Yorumunuz
+                  textarea.form-control(name='comment', rows='3')
+                button.btn.btn-default(type='submit') Yolla
+          // comment-meta
+          .media
+            // answer to the first comment
+            .media-heading
+              button.btn.btn-default.btn-collapse.btn-xs(type='button', data-toggle='collapse', data-target='#collapseFour', aria-expanded='false', aria-controls='collapseExample')
+                span.glyphicon.glyphicon-minus(aria-hidden='true')
+              span.label.label-info 12314
+              |  vertu 12 sat once yazmis
+            #collapseFour.panel-collapse.collapse.in
+              .media-left
+                .vote-wrap
+                  .save-post
+                    a(href='#')
+                      span.glyphicon.glyphicon-star(aria-label='Kaydet')
+                  .vote.up
+                    i.glyphicon.glyphicon-menu-up
+                  .vote.inactive
+                    i.glyphicon.glyphicon-menu-down
+                // vote-wrap
+              // media-left
+              .media-body
+                p
+                  | yazmayın artık amk, görmeyeyim sol framede. insan bi meraklanıyor, ümitleniyor. sonra yine özlem dolu yazıları görüp hayal kırıklığıyla okuyorum.
+                .comment-meta
+                  span
+                    a(href='#') sil
+                  span
+                    a(href='#') kaydet
+                  span
+                    a(href='#') sikayer et
+                  span
+                    a(role='button', data-toggle='collapse', href='#replyCommentFive', aria-expanded='false', aria-controls='collapseExample') cevapla
+                  #replyCommentFive.collapse
+                    form
+                      .form-group
+                        label(for='comment') Yorumunuz
+                        textarea.form-control(name='comment', rows='3')
+                      button.btn.btn-default(type='submit') Yolla
+                // comment-meta
+                .media
+                  // first comment
+                  .media-heading
+                    button.btn.btn-default.btn-xs(type='button', data-toggle='collapse', data-target='#collapseFive', aria-expanded='false', aria-controls='collapseExample')
+                      span.glyphicon.glyphicon-minus(aria-hidden='true')
+                    span.label.label-info 12314
+                    |  vertu 12 sat once yazmis
+                  #collapseFive.panel-collapse.collapse.in
+                    .media-left
+                      .vote-wrap
+                        .save-post
+                          a(href='#')
+                            span.glyphicon.glyphicon-star(aria-label='Kaydet')
+                        .vote.up
+                          i.glyphicon.glyphicon-menu-up
+                        .vote.inactive
+                          i.glyphicon.glyphicon-menu-down
+                      // vote-wrap
+                    // media-left
+                    .media-body
+                      p
+                        | yazmayın artık amk, görmeyeyim sol framede. insan bi meraklanıyor, ümitleniyor. sonra yine özlem dolu yazıları görüp hayal kırıklığıyla okuyorum.
+                      .comment-meta
+                        span
+                          a(href='#') sil
+                        span
+                          a(href='#') kaydet
+                        span
+                          a(href='#') sikayer et
+                        span
+                          a(role='button', data-toggle='collapse', href='#replyCommentSix', aria-expanded='false', aria-controls='collapseExample') cevapla
+                        #replyCommentSix.collapse
+                          form
+                            .form-group
+                              label(for='comment') Yorumunuz
+                              textarea.form-control(name='comment', rows='3')
+                            button.btn.btn-default(type='submit') Yolla
+                      // comment-meta
+                      .media
+                        // answer to the first comment
+                        .media-heading
+                          button.btn.btn-default.btn-collapse.btn-xs(type='button', data-toggle='collapse', data-target='#collapseSix', aria-expanded='false', aria-controls='collapseExample')
+                            span.glyphicon.glyphicon-minus(aria-hidden='true')
+                          span.label.label-info 12314
+                          |  vertu 12 sat once yazmis
+                        #collapseSix.panel-collapse.collapse.in
+                          .media-left
+                            .vote-wrap
+                              .save-post
+                                a(href='#')
+                                  span.glyphicon.glyphicon-star(aria-label='Kaydet')
+                              .vote.up
+                                i.glyphicon.glyphicon-menu-up
+                              .vote.inactive
+                                i.glyphicon.glyphicon-menu-down
+                            // vote-wrap
+                          // media-left
+                          .media-body
+                            p
+                              | yazmayın artık amk, görmeyeyim sol framede. insan bi meraklanıyor, ümitleniyor. sonra yine özlem dolu yazıları görüp hayal kırıklığıyla okuyorum.
+                            .comment-meta
+                              span
+                                a(href='#') sil
+                              span
+                                a(href='#') kaydet
+                              span
+                                a(href='#') sikayer et
+                              span
+                                a(role='button', data-toggle='collapse', href='#replyCommentOne', aria-expanded='false', aria-controls='collapseExample') cevapla
+                              #replyCommentOne.collapse
+                                form
+                                  .form-group
+                                    label(for='comment') Yorumunuz
+                                    textarea.form-control(name='comment', rows='3')
+                                  button.btn.btn-default(type='submit') Yoll

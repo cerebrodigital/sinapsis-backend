@@ -1,0 +1,43 @@
+extends ../layout
+block head-scripts
+  link(rel='stylesheet', href='/css/login.css')
+block bottom-scripts
+  script(src="/js/register.js")
+  
+block content
+  .container
+    .omb_login
+      h3.omb_authTitle
+        | Registrate en la Comunidad
+      .row.omb_row-sm-offset-3.omb_socialButtons
+        .col-xs-4.col-sm-2
+          a.btn.btn-lg.btn-block.omb_btn-facebook(href='#')
+            i.fa.fa-facebook.visible-xs
+            span.hidden-xs via Facebook
+        .col-xs-4.col-sm-2
+          a.btn.btn-lg.btn-block.omb_btn-twitter(href='#')
+            i.fa.fa-twitter.visible-xs
+            span.hidden-xs via Twitter
+        .col-xs-4.col-sm-2
+          a.btn.btn-lg.btn-block.omb_btn-google(href='#')
+            i.fa.fa-google-plus.visible-xs
+            span.hidden-xs via Instagram
+      .row.omb_row-sm-offset-3.omb_loginOr
+        .col-xs-12.col-sm-6
+          span o llena el siguiente formulario y te enviaremos un correo para completar el registro:
+      .row.omb_row-sm-offset-3
+        .col-xs-12.col-sm-6
+          form#register.omb_loginForm(action='', autocomplete='off', method='POST')
+            .input-group
+              span.input-group-addon
+                i.fa.fa-user
+              input.form-control(type='text', name='username', placeholder='nombre de usuario')
+            span.help-block
+            .input-group
+              span.input-group-addon
+                i.fa.fa-lock
+              input.form-control(type='email', name='email', placeholder='Email')
+            br
+            //span.help-block Password error
+            button.btn.btn-lg.btn-primary.btn-block(type='submit') Registrarse
+

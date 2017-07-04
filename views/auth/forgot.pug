@@ -1,0 +1,21 @@
+extends ../layout
+block head-scripts
+  link(rel='stylesheet', href='/css/login.css')
+block bottom-scripts
+  script(src="/js/forgot.js")
+
+block content
+  .container
+    .omb_login
+      h3.omb_authTitle
+        | Escribe tu email y solicita una nueva contraseña
+      .row.omb_row-sm-offset-3
+        .col-xs-12.col-sm-6
+          form#forgot.omb_loginForm(action='', autocomplete='off', method='POST')
+            .input-group
+              span.input-group-addon
+                i.fa.fa-user
+              input.form-control(type='email', name='email', placeholder='Email / Correo Electrónico')
+            span.help-block
+            br
+            button.btn.btn-lg.btn-primary.btn-block(type='submit') Resetear mi Contraseña

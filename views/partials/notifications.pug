@@ -1,0 +1,28 @@
+#notification-container
+
+
+script#success-notification-template(type="text-template")  
+  .alert.alert-success.alert-dismissable.fade.in
+    a.close(href='#', data-dismiss='alert', aria-label='close') ×
+    strong ¡BIEN!
+      h4.success-message
+
+script#warning-notification-template(type="text-template")  
+  .alert.alert-warning.alert-dismissable.fade.in
+    a.close(href='#', data-dismiss='alert', aria-label='close') ×
+    strong ¡CUIDADO!
+      h4.warning-message
+
+script#danger-notification-template(type="text-template")  
+  .alert.alert-danger.alert-dismissable.fade.in
+    a.close(href='#', data-dismiss='alert', aria-label='close') ×
+    strong ¡PELIGRO!
+      h4.danger-message
+
+script#info-notification-template(type="text-template")  
+  .alert.alert-info.alert-dismissable.fade.in
+    a.close(href='#', data-dismiss='alert', aria-label='close') ×
+    strong INFORMACION!
+      h4.info-message
+
+  

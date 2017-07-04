@@ -1,0 +1,76 @@
+extends layout
+
+block head-scripts
+  link(href='/css/publish.css', rel='stylesheet')
+
+
+block bottom-scripts
+  script(src="/js/publish.js")
+
+block content
+  // Main jumbotron for a primary marketing message or call to action
+  .container
+    // Example row of columns
+    .row
+      .col-sm-6.col-md-8
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title Selecciona lo que vas a publicarv
+          .panel-body
+            | Especifica que tipo de contenido vas a publicar:
+            .btn-group.btn-group-justified(role='group', aria-label='...')
+              .btn-group(role='group')
+                button.btn.btn-default(type='button') Media
+              .btn-group(role='group')
+                button.btn.btn-default(type='button') Noticia
+              .btn-group(role='group')
+                button.btn.btn-default(type='button') Articulo
+            br
+            .input-group.col-md-10.col-md-offset-1
+              input.form-control(type='text', name='title', placeholder="Titulo de el Post")
+            .input-group.col-md-10.col-md-offset-1
+              input.form-control(type='text', name='title', placeholder="Descripción Breve")
+            .col-md-10.col-md-offset-1
+              br
+              textarea#textarea.form-control(name='textarea', rows=10) default text
+            .col-md-10.col-md-offset-1
+              label.radio-inline(for='radios-0')
+                input#radios-0(type='radio', name='radios', value='1', checked='checked')
+                |       Voy a poner un link
+              label.radio-inline(for='radios-1')
+                input#radios-1(type='radio', name='radios', value='2')
+                |       Voy a subir contenido
+            .input-group.col-md-10.col-md-offset-1
+              input.form-control(type='text', name='url', placeholder="http://")
+            .col-md-10.col-md-offset-1
+              input#filebutton.input-file(name='filebutton', type='file')
+            .col-md-10.col-md-offset-1
+              select#selectbasic.form-control(name='selectbasic')
+                option(value='categoria1') Categoria 1
+                option(value='categoria2') Categoria 2
+                option(value='categoria3') Categoria 3
+              br
+            .input-group.col-md-10.col-md-offset-1
+              input.form-control(type='text', name='tags', placeholder="biologia, naturaleza, botanica")
+            .col-md-4
+              button#singlebutton.btn.btn-danger.pull-left(name='singlebutton') Cancelar
+            .col-md-6
+              button#singlebutton.btn.btn-success.pull-right(name='singlebutton') ENVIAR
+      .col-sm-6.col-md-4
+        .panel.panel-default
+          br
+          p Asi
+          br
+          b TITULO:
+          p 
+            | Es muy importante que pongas un buen título para que tu nota genere relevancia.
+          br
+          b DESCRIPCION:
+          p 
+            | No es un campo obligatorio pero si lo pones es lo que va a describir tu nota en lugar de los primeros 200 caracteres por default del contenido.
+          b CONTENIDO:
+          p 
+            | Es donde puedes describir más a fondo tu nota, por si necesitas múltiples párrafos, o varias imágenes + videos, puedes elaborarla gracias a las herramientas que te proporcionamos. Esto también puede ser una breve descripción si no llenaste el campo de la descripción y solo quieres publicar un video.
+          b SUBIR O PONER FUENTE DEL MEDIA:
+          p 
+            | No es un campo obligatorio pero si lo pones es lo que va a describir tu nota en lugar de los primeros 200 caracteres por default del contenido.

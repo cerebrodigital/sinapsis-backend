@@ -27,7 +27,7 @@ module.exports = function(models){
     .catch(err => { return next(err) })
     .then(found => {
       if(!found){ return next() }
-      res.json({message: `Profile id: ${id} found` , data: found})
+      res.json({message: `User id: ${id} found` , data: found})
     })
   })
   return router

@@ -1,0 +1,188 @@
+extends ../layout
+block head-scripts
+  link(rel='stylesheet', href='/css/profile.css')
+  link(href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css', rel='stylesheet')
+  link(href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css', rel='stylesheet')
+block bottom-scripts
+  script(src="/js/profile.js")
+block content 
+  .container.profile
+    .row
+      .span12
+        .well.well-small.clearfix
+          .row-fluid
+            .span2
+              img.img-polaroid(src='http://www.gravatar.com/avatar/f6112e781842d6a2b4636b35451401ff?s=125')
+            .span4
+              h2 Jonnie Spratley
+              ul.unstyled
+                li
+                  b título: 
+                  |  El lord de la Biología
+                li
+                  b contacto:
+                  |  jonniespratley@me.com
+                li
+                  b website:
+                  |  http://jonniespratley.me
+            .span6
+              ul.inline.stats
+                li
+                  span 27
+                  |                  Level
+                li
+                  span 2,444
+                  |                  Créditos
+                li
+                  span 35,334
+                  |                  Experiencia
+                li
+                  span 186
+                  |                  Seguidores
+              div
+                span6.pull-right
+                  a.btn.btn-info(href='#', role='button') Seguir
+                  a.btn.btn-success(href='#', role='button') Mensajear
+                  a.btn.btn-danger(href='#', role='button') Reportar
+              
+  .container.target
+    br
+    .row
+      .col-sm-3
+        // left col
+        ul.list-group
+          li.list-group-item.text-muted(contenteditable='false') Perfil
+          li.list-group-item.text-right
+            span.pull-left
+              strong Se Unió
+            |  2.13.2014
+          li.list-group-item.text-right
+            span.pull-left
+              strong Última actividad
+            |  Ayer
+          li.list-group-item.text-right
+            span.pull-left
+              strong Nombre
+            |  Joseph
+            |                         Doe
+          li.list-group-item.text-right
+            span.pull-left
+              strong Username: 
+            |  yadaxim
+        .panel.panel-default
+          .panel-heading
+            | Badges Ganadas
+          .panel-body
+            img(alt='300x200', src='https://image.flaticon.com/sprites/new_packs/340322-rank-badge.png', height='200', width='200')
+        .panel.panel-default
+          .panel-heading
+            | Sitio Web 
+            i.fa.fa-link.fa-1x
+          .panel-body
+            a(href='http://yadaxim.com') yadaxim.com
+        ul.list-group
+          li.list-group-item.text-muted
+            | Actividad en General 
+            i.fa.fa-dashboard.fa-1x
+          li.list-group-item.text-right
+            span.pull-left
+              strong Posts
+            |  125
+          li.list-group-item.text-right
+            span.pull-left
+              strong Votos
+            |  13
+          li.list-group-item.text-right
+            span.pull-left
+              strong Comentarios
+            |  37
+          li.list-group-item.text-right
+            span.pull-left
+              strong Puntos
+            |  7873
+      // /col-3
+      .col-sm-9(style='', contenteditable='false')
+        .panel.panel-default
+          .panel-heading Yadaxims's Bio
+          .panel-body
+            | esta es una larga descripción de quien es el usuario y cuales son sus gustos dentro de la comunidad.
+        .panel.panel-default.target
+          .panel-heading(contenteditable='false') Contenido Publicado
+          .panel-body
+            .row
+              .col-md-4
+                .thumbnail
+                  img(alt='300x200', src='http://lorempixel.com/600/200/people')
+                  .caption
+                    h3
+                      | Rover
+                    p
+                      | Cocker Spaniel who loves treats.
+                    p
+              .col-md-4
+                .thumbnail
+                  img(alt='300x200', src='http://lorempixel.com/600/200/city')
+                  .caption
+                    h3
+                      | Marmaduke
+                    p
+                      | Is just another friendly dog.
+                    p
+              .col-md-4
+                .thumbnail
+                  img(alt='300x200', src='http://lorempixel.com/600/200/sports')
+                  .caption
+                    h3
+                      | Rocky
+                    p
+                      | Loves catnip and naps. Not fond of children.
+                    p
+        .panel.panel-default.target
+          .panel-heading(contenteditable='false') Últimas Acciones
+          .panel-body
+            .row
+              .col-md-12
+                // Nav tabs
+                ul.nav.nav-tabs
+                  li.active
+                    a(href='#comentarios', data-toggle='tab')
+                      span.glyphicon.glyphicon-inbox
+                      | Comentarios
+                  li
+                    a(href='#votos', data-toggle='tab')
+                      span.glyphicon.glyphicon-user
+                      | Votos
+                  li
+                    a(href='#messages', data-toggle='tab')
+                      span.glyphicon.glyphicon-tags
+                      | Reputacion
+                  li
+                    a(href='#settings', data-toggle='tab')
+                      span.glyphicon.glyphicon-plus.no-margin
+                // Tab panes
+                .tab-content
+                  #comentarios.tab-pane.fade.in.active
+                    .list-group
+                      a.list-group-item(href='#')
+                        span Post Source from Comment
+                        span.text-muted(style='font-size: 11px;') - Este es un comentario preuba largo para ver como se ve por aqui ?
+                        span.badge 12:56 AM
+                        span.pull-right
+                      a.list-group-item(href='#')
+                        span Another Post Title Source
+                        span.text-muted(style='font-size: 11px;') - Hi hello how r u ?
+                        span.badge 12:40 AM
+                        span.pull-right
+                      a.list-group-item.read(href='#')
+                        span Another News
+                        span.text-muted(style='font-size: 11px;') - Hi hello how r u ?
+                        span.badge 12:15 AM
+                        span.pull-right
+                  #votos.tab-pane.fade.in
+                    .list-group
+                      .list-group-item
+                        span.text-center Esta otra esta vacia
+                  #messages.tab-pane.fade.in
+                    | ...
+                  #settings.tab-pane.fade.in
+                    | Esta tab esta vacia

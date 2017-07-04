@@ -1,0 +1,144 @@
+extends ../layout
+block head-scripts
+  link(rel='stylesheet', href='/css/profile.css')
+  link(href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css', rel='stylesheet')
+  link(href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css', rel='stylesheet')
+block bottom-scripts
+  script(src="/js/profile.js")
+block content 
+  .container.profile
+    .row
+      .span12
+        .well.well-small.clearfix
+          .row-fluid
+            .span2
+              img.img-polaroid(src='http://www.gravatar.com/avatar/f6112e781842d6a2b4636b35451401ff?s=125')
+            .span4
+              h2 Jonnie Spratley
+              ul.unstyled
+                li
+                  b título: 
+                  |  El lord de la Biología
+                li
+                  b contacto:
+                  |  jonniespratley@me.com
+                li
+                  b website:
+                  |  http://jonniespratley.me
+            .span6
+              ul.inline.stats
+                li
+                  span 27
+                  |                  Level
+                li
+                  span 2,444
+                  |                  Créditos
+                li
+                  span 35,334
+                  |                  Experiencia
+                li
+                  span 186
+                  |                  Seguidores
+              div
+                span6.pull-right
+                  a.btn.btn-info(href='#', role='button') Seguir
+                  a.btn.btn-success(href='#', role='button') Mensajear
+                  a.btn.btn-danger(href='#', role='button') Reportar
+              
+  .container.target
+    br
+    .row
+      
+      .col-sm-12
+        .panel.panel-default
+          .panel-heading EDITAR TU PERFIL
+          .panel-body
+            | Estas editando tu perfil, favor de rellenar todos los campos para obtener puntos de experiencia extras y tu badge de neurona.
+            form#register(action='', autocomplete='off', method='POST')
+              .form-group
+                .col-md-4
+                  label.control-label
+                    | Nombre
+                .col-md-8
+                  input.input-md.form-control(maxlength='30', name='username', placeholder='Escribe tu nombre', style='margin-bottom: 10px', type='text')
+              .form-group
+                .col-md-4
+                  label.control-label
+                    | Apellido
+                .col-md-8
+                  input.input-md.form-control(maxlength='30', name='username', placeholder='Escribe tu Apellido', style='margin-bottom: 10px', type='text')
+              .form-group
+                .col-md-4
+                  label.control-label
+                    | Ciudad
+                .col-md-8
+                  input.input-md.form-control(maxlength='30', name='username', placeholder='¿En que ciudad vives?', style='margin-bottom: 10px', type='text')
+              .form-group
+                .col-md-4
+                  label.control-label
+                    | Estado
+                .col-md-8
+                  input.input-md.form-control(maxlength='30', name='username', placeholder='¿En que Estado vives?', style='margin-bottom: 10px', type='text')
+              .form-group
+                .col-md-4
+                  label.control-label
+                    | Pais
+                .col-md-8
+                  input.input-md.form-control(maxlength='30', name='username', placeholder='En que País vives', style='margin-bottom: 10px', type='text')
+              .form-group
+                .col-md-4
+                  label.control-label
+                    | Teléfono Movil o Estático
+                .col-md-8
+                  input.input-md.form-control(maxlength='30', name='username', placeholder='lada-numero', style='margin-bottom: 10px', type='text')
+              .form-group
+                .col-md-4
+                  label.control-label
+                    | Bio o tu presentación ante la comunidad
+                .col-md-8
+                  textarea.form-control(rows='5', placeholder='Tu descripción')
+              .form-group
+                .col-md-4
+                  label.control-label
+                    | Fecha de Nacimiento
+                .col-md-8
+                  input.input-md.form-control(maxlength='30', name='username', placeholder='DD/MM/AAAA', style='margin-bottom: 10px', type='text')
+              .form-group
+                .col-md-4
+                  label.control-label
+                    | ¿A que te dedicas?
+                .col-md-8
+                  input.input-md.form-control(maxlength='30', name='username', placeholder='Programador, Desarrollador, Administrador', style='margin-bottom: 10px', type='text')
+              .form-group
+                .col-md-4
+                  label.control-label
+                    | Mi Website
+                .col-md-8
+                  input.input-md.form-control(maxlength='30', name='username', placeholder='http://miwebsite.com/', style='margin-bottom: 10px', type='text')
+              .form-group
+                .col-md-4
+                  label.control-label
+                    | Mi Facebook
+                .col-md-8
+                  input.input-md.form-control(maxlength='30', name='username', placeholder='https://facebook.com/mifacebook', style='margin-bottom: 10px', type='text')
+              .form-group
+                .col-md-4
+                  label.control-label
+                    | Mi Youtube
+                .col-md-8
+                  input.input-md.form-control(maxlength='30', name='username', placeholder='https://youtube.com/user/miyoutube', style='margin-bottom: 10px', type='text')
+              .form-group
+                .col-md-4
+                  label.control-label
+                    | Mi Instagram
+                .col-md-8
+                  input.input-md.form-control(maxlength='30', name='username', placeholder='https://isntagram.com/miinstagram', style='margin-bottom: 10px', type='text')
+              .form-group
+                .col-md-4
+                  label.control-label
+                    | Mi Twitter
+                .col-md-8
+                  input.input-md.form-control(maxlength='30', name='username', placeholder='https://twitter.com/mitwitter', style='margin-bottom: 10px', type='text')
+              br
+              //span.help-block Password error
+              button.btn.btn-lg.btn-primary.btn-block(type='submit') Actualizar Perfil

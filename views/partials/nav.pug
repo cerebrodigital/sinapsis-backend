@@ -1,0 +1,82 @@
+.navbar-wrapper
+  .container-fluid
+    .navbar.navbar-default(role='navigation')
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/', style='margin-right:-8px; margin-top:-5px;')
+            img(alt='Cerebro Digital', src='images/logocd.png', width='40px', height='40px')
+          a.navbar-brand(href='/') Cerebro Digital
+          i.brand_network
+            small
+              small Proyecto Sinapsis v0.1
+        .navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/') Home
+            li
+              a(href='/post') Posts
+            li
+              a(href='#media') Categorías
+            li
+              a(href='/usuarios') Usuarios
+            li
+              a(href='#media') Buscar
+            li
+              a(href='#')
+                i.fa.fa-envelope-o.fa-lg(aria-hidden='true')
+          ul.nav.navbar-nav.navbar-right
+            if user 
+              li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown')
+                span.user-avatar.pull-left(style='margin-right:8px; margin-top:-5px;')
+                  img.img-responsive.img-circle(src='https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png', title='John Doe', alt='John Doe', width='30px', height='30px')
+                span.user-name
+                  | John Doe
+                b.caret
+              ul.dropdown-menu
+                li
+                  .navbar-content
+                    .row
+                      .col-md-5
+                        img.img-responsive(src='https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png', alt='Alternate Text', width='120px', height='120px')
+                        p.text-center.small
+                          a(href='./3X6zm') Change Photo
+                      .col-md-7
+                        span John Doe
+                        p.text-muted.small
+                          | example@pods.tld
+                        .divider
+                        a.btn.btn-default.btn-xs(href='./56ExR')
+                          i.fa.fa-user-o(aria-hidden='true')
+                          |  Profile
+                        a.btn.btn-default.btn-xs(href='#')
+                          i.fa.fa-address-card-o(aria-hidden='true')
+                          |  Contacts
+                        a.btn.btn-default.btn-xs(href='#')
+                          i.fa.fa-cogs(aria-hidden='true')
+                          |  Settings
+                        a.btn.btn-default.btn-xs(href='#')
+                          i.fa.fa-question-circle-o(aria-hidden='true')
+                          |  Help!
+                  .navbar-footer
+                    .navbar-footer-content
+                      .row
+                        .col-md-6
+                          a.btn.btn-default.btn-sm(href='#')
+                            i.fa.fa-unlock-alt(aria-hidden='true')
+                            |  Change Passowrd
+                        .col-md-6
+                          a.btn.btn-default.btn-sm.pull-right(href='#')
+                            i.fa.fa-power-off(aria-hidden='true')
+                            |  Sign Out
+            else
+              li
+                a(href='/login') Conectar
+              li
+                a(href='/register') Registrar
+
