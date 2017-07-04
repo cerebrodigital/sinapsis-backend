@@ -1,4 +1,6 @@
 'use strict';
+var slug = require('slug')
+
 module.exports = function(sequelize, DataTypes) {
   var Category = sequelize.define('Category', {
     id:       {
@@ -29,7 +31,8 @@ module.exports = function(sequelize, DataTypes) {
   Category.allowed_columns  = ["code","name","description"]
   Category.required_columns = ["code","name","description"]
 
-  Category.hook('beforeSave', (category, options) => {
+  Category.hook('beforeValidate', (category, options) => {
+    console.log("before validatre", category)
     category.slug = slug(category.name)
   })
 
