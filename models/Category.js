@@ -13,7 +13,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
+    },
+    slug: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     description: DataTypes.STRING
   }, {
@@ -24,6 +28,10 @@ module.exports = function(sequelize, DataTypes) {
 
   Category.allowed_columns  = ["code","name","description"]
   Category.required_columns = ["code","name","description"]
+
+  Category.hook('beforeSave', (category, options) => {
+    category.slug = slug(category.name)
+  })
 
   return Category;
 };

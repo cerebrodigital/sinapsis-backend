@@ -1,5 +1,6 @@
 'use strict';
 var md5 = require("blueimp-md5")
+var slug = require("slug")
 
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
@@ -14,6 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     username: DataTypes.STRING,
+    slug:     DataTypes.STRING,
     phash:    DataTypes.STRING,
     vhash:    DataTypes.STRING
   }, {
@@ -28,16 +30,21 @@ module.exports = function(sequelize, DataTypes) {
     return this.phash === md5(password)
   }
 
+  User.hook('beforeSave', (user, options) => {
+    user.slug = slug(user.username)
+  })
+
   User.associate = function(models) {
     User.belongsToMany(models.Badge, {through: 'UserBadge'})
     User.belongsToMany(models.Achievement, {through: 'UserAchievement'})
     User.hasOne(models.Profile)
     User.hasMany(models.CategoryProfile)
-    User.hook('afterCreate', (user, options) => {
+    /* User.hook('afterCreate', (user, options) => {
       models.Profile.create({}).then(profile =>
         user.setProfile(profile)
       )
     })
+    */
   }
 
   User.allowed_columns  = ["email","username"]

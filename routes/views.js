@@ -38,6 +38,12 @@ module.exports = function(models){
     res.render('auth/profile', { title: 'Profile'});
   });
 
+  router.get('/perfil/:slug', function(req, res, next) {
+    models.User.findOne({ where: {slug: req.params.slug}})
+    .catch(err=>{next(err)})
+    .then(found=>{res.render('auth/profile', { title: 'Profile', vuser: found})}) 
+  });
+
   router.get('/perfil-editar', function(req, res, next) {
     res.render('auth/profile_edit', { title: 'Editar Perfil'});
   });
