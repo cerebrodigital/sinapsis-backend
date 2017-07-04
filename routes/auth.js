@@ -12,47 +12,36 @@ module.exports = function(models){
   const User = models.User
   let router = express.Router();
 
-  router.post('/login', function(req, res, next) {
-    let email = req.body.email || req.query.email
-    let password = req.body.password || req.query.password
 
-    User.findOne({where: {email: email}})
-    .catch(err=>{next(err)})
-    .then(user=>{
-      if(!user){
-        return res.status(401).json({message: "wrong credentials"})
-      }
-      if(!user.validPassword(password)){
-        return res.status(401).json({message: "wrong credentials"})
-      }
-      let payload = {
-        id: user.id,
-        email: user.email
-      }
 
-      let token = jwt.sign(payload, config.jwtsecret)
-
-      res.json({message: "Authenticated", token: token})
+  router.post('/login',
+    passport.authenticate('local', {
+      successRedirect: '/',
+      failureRedirect: '/login',
+      failureFlash:     true
     })
-  });
+  )
 
-
-  router.post('/logout', (req,res,next)=>{
+  router.get('/logout', (req,res,next)=>{
     req.logout()
-    res.json({message: 'ok, logged out, successfully :)'})
+    res.redirect('/login');
   })
 
   router.post('/register', (req, res, next)=>{
+
     // search if exists
     User.findOne({where: {email: req.body.email}})
-    .catch(function(err){return next(err)})
     .then(function(user){
       if(user){
-        return res.json({message: 'Email used'})
+        req.flash( 'error', 'Correo existente')
+        return res.redirect('/register')
+
       }else{
         User.create({
           email:    req.body.email,
+          name:     req.body.name,
           vhash:    uuid.v4()
+
         })
         .catch(function(err){return next(err)})
         .then(function(saved){
@@ -63,37 +52,31 @@ module.exports = function(models){
           }, function (err){
             if(err){
               // handle error
-              return next(err)
+              console.log(err)
             }
-            return res.json({message: 'Email sent'})
+            req.flash( 'info', 'Email sent')
+            res.redirect('/login')
           })
         })
       }
     })
-  })
 
+
+  })
   router.post('/activation', (req, res, next)=>{
-    User.findOne({where: {vhash: req.body.vhash} })
+    User.findOne({where: {vhash: req.body.vhash}})
     .catch(function(err){return next(err)})
     .then((user)=>{
       if(!user){ next()}
-        user.password = req.body.password
+        user.password = md5(req.body.password)
         user.vhash = null
         user.save().then(function(saved){
-          res.mailer.send('welcome_email', {
-            to: saved.email,
-            subject: 'Bienvenido a la comunidad',
-            user:     saved
-          }, function (err){
-            if(err){
-              // handle error
-              return next(err)
-            }
-            return res.json({message: 'Usuario activado'})
-          })
+          req.flash( 'info', 'Activated')
+          res.redirect('/login')
         })
     })
   })
+
 
   router.post('/forgot', (req,res,next)=>{
     console.log('forgot body', req.body)
@@ -103,7 +86,9 @@ module.exports = function(models){
       console.log('user', user)
       if(!user){
         // flash same as if we did find it
-        return res.json({message: "Email sent if email exists, it does't"})
+        req.flash('info', "Email sent if email exists, it does't")
+        return res.redirect('/forgot')
+
       }
       // we did find the user with the email, set hash and send ativation
       user.vhash = uuid.v4()
@@ -119,7 +104,8 @@ module.exports = function(models){
             // handle error
             console.log(err)
           }
-          return res.json({message: "Email sent if email exists"})
+          req.flash( 'info', 'Email sent if email exists, it does.')
+          res.redirect('/forgot')
         })
       })
     })
