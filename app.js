@@ -11,6 +11,7 @@ var rootRouter =   require('./routes/root');
 var usersRouter =  require('./routes/users');
 var authRouter =   require('./routes/auth');
 var postsRouter =   require('./routes/posts');
+var viewsRouter =   require('./routes/views');
 var simpleCRUDRouter =   require('./routes/simpleCRUD');
 var models  =      require('./models');
 
@@ -96,17 +97,18 @@ app.use(session({ secret: 'some secreto' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// mailer
+app.use('/api/post_types', simpleCRUDRouter(models,'PostType'))
+app.use('/api/vote_types', simpleCRUDRouter(models,'VoteType'))
+app.use('/api/action_types', simpleCRUDRouter(models,'ActionType'))
+app.use('/api/categories', simpleCRUDRouter(models,'Category'))
 
-app.use('/post_types', simpleCRUDRouter(models,'PostType'))
-app.use('/vote_types', simpleCRUDRouter(models,'VoteType'))
-app.use('/action_types', simpleCRUDRouter(models,'ActionType'))
-app.use('/categories', simpleCRUDRouter(models,'Category'))
+app.use('/api/',          rootRouter(models));
+app.use('/api/users',     usersRouter(models));
+app.use('/api/auth',      authRouter(models));
+app.use('/api/posts',     postsRouter(models));
 
-app.use('/',      rootRouter(models));
-app.use('/users', usersRouter(models));
-app.use('/auth',  authRouter(models));
-app.use('/posts', postsRouter(models));
+
+app.use('/',              viewsRouter(models));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -12,8 +12,6 @@ module.exports = function(models){
   const User = models.User
   let router = express.Router();
 
-
-
   router.post('/login',
     passport.authenticate('local', {
       successRedirect: '/',

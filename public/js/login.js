@@ -4,10 +4,8 @@ $(($)=>{
     e.preventDefault();
 
     data = $('#conectar').serialize();
-    $.post('http://localhost:3003/auth/login', data, function(res) {
-
-      localStorage.token = res.token
-      window.location ="/?token=" + res.token;
+    $.post('/api/auth/login', data, function(res) {
+      console.log(response)
     });
 
   })
