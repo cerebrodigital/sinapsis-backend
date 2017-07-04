@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var jwt  = require('jsonwebtoken')
+var flash = require('connect-flash');
 var logger =       require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser =   require('body-parser');
@@ -32,7 +33,8 @@ passport.use(new LocalStrategy({
   function(email, password, done) {
     console.log(email,password)
 
-    User.findOne({where: { email: email}})
+    User.findOne({where: {email: email}})
+    .catch((err)=>{ return done(err) })
     .then((user)=>{
       if (!user){
         done(null, false, { message: 'Email not found.'})
@@ -42,12 +44,11 @@ passport.use(new LocalStrategy({
       }
       done(null, user)
     })
-    .catch((err)=>{ return done(err) })
   }
 ));
 
 passport.serializeUser(function(user, done) {
-  return done(null, user._id);
+  return done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
@@ -78,10 +79,6 @@ mailer.extend(app, {
   }
 });
 
-app.use(cors({
-  origin: 'http://localhost:3000'
-}))
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -96,6 +93,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'some secreto' }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 app.use('/api/post_types', simpleCRUDRouter(models,'PostType'))
 app.use('/api/vote_types', simpleCRUDRouter(models,'VoteType'))
@@ -107,8 +105,8 @@ app.use('/api/users',     usersRouter(models));
 app.use('/api/auth',      authRouter(models));
 app.use('/api/posts',     postsRouter(models));
 
-
 app.use('/',              viewsRouter(models));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
