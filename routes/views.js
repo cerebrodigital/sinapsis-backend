@@ -1,11 +1,12 @@
 var express = require('express');
 var middleware = require('../middleware')
+var helpers = require('../helpers')
 
 /* GET home page. */
 module.exports = function(models){
   let router = express.Router();
   router.get('/', function(req, res, next) {
-    res.render('landing', { title: 'Home' , flash: req.flash,  user: req.user});
+    res.render('landing', helpers.baseLocals(req, { title: 'Landing' }));
   });
 
   router.get('/login', function(req, res, next) {
@@ -13,7 +14,7 @@ module.exports = function(models){
       res.redirect('/')
     }else{
       //console.log('flash', req.flash('error'))
-      res.render('auth/login', { title: 'Conectar', flash_errors: req.flash('error'), flash_success: req.flash('success'), flash_warnings: req.flash('warning'), flash_infos: req.flash('info')});
+      res.render('auth/login', helpers.baseLocals(req, {title: 'Conectar'}));
     }
   });
 

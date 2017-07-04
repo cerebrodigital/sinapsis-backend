@@ -3,7 +3,7 @@ block head-scripts
   link(rel='stylesheet', href='/css/login.css')
 block bottom-scripts
   script(src="/js/activation.js")
-  
+
 block content
   .container
     .omb_login
@@ -14,7 +14,7 @@ block content
           span Por favor digita la contraseña que deseas usar:
       .row.omb_row-sm-offset-3
         .col-xs-12.col-sm-6
-          form#activation.omb_loginForm(action='', autocomplete='off', method='POST')
+          form#activation.omb_loginForm(action='/api/auth/activation', autocomplete='off', method='POST')
             .input-group
               span.input-group-addon
                 i.fa.fa-user
