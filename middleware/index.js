@@ -1,3 +1,4 @@
 module.exports={
-  hasToken: require('./hasToken')
+  hasToken: require('./hasToken'),
+  loggedIn: require('./loggedIn')
 }
