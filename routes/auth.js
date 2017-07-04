@@ -43,7 +43,7 @@ module.exports = function(models){
         })
         .catch(function(err){return next(err)})
         .then(function(saved){
-          res.mailer.send('activation_email', {
+          res.mailer.send('emails/activation_email', {
             to: saved.email,
             subject: 'Activation',
             user:     saved
