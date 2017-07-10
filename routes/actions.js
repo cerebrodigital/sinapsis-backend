@@ -35,15 +35,28 @@ module.exports = function(models){
   })
 
   router.post('/publish/', (req, res, next)=>{
-    // params {}
-    let data = req.params.data
+    let data = req.params
+    let p_array = []
 
-    models.Post.create({
-
+    p_array.push(models.PostType.findOne({where: {code: data.post_type_code}}))
+    p_array.push(models.Category.findOne({where: {code: data.category_code}}))
+    Promise.all(p_array)
+    .catch(err => { return next(err) })
+    .then(values=>{
+      let [postType, category] = values
+      models.Post.create({
+        title:          data.title,
+        url:            data.url,
+        tags:           data.tags,
+        description:    data.description,
+        category_id:    category.id,
+        post_type_id:   postType.id
+      })
+      .catch(err => { return next(err) })
+      .then(post => {
+        res.json(post)
+      })
     })
-
   })
-
-
   return router
 }

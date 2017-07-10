@@ -10,6 +10,7 @@ var cors    =      require('cors')
 var middleware =   require('./middleware')
 var rootRouter =   require('./routes/root');
 var usersRouter =  require('./routes/users');
+var actionsRouter =require('./routes/actions');
 var authRouter =   require('./routes/auth');
 var postsRouter =   require('./routes/posts');
 var viewsRouter =   require('./routes/views');
@@ -105,6 +106,7 @@ app.use('/api/',          rootRouter(models));
 app.use('/api/users',     usersRouter(models));
 app.use('/api/auth',      authRouter(models));
 app.use('/api/posts',     postsRouter(models));
+app.use('/api/actions', actionsRouter(models));
 
 app.use('/',              viewsRouter(models));
 
