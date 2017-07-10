@@ -34,15 +34,7 @@ module.exports = function(models){
 
   })
 
-  router.get('/publish/', (req, res, next)=>{
-    req.params = {
-      title:  "title a",
-      url:            '',
-      tags:           '',
-      description:    '',
-      category_code:  'math',
-      post_type_code: 'article'
-    }
+  router.post('/publish/', (req, res, next)=>{
     let data = req.params
     let p_array = []
 
