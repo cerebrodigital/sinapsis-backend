@@ -36,7 +36,7 @@
                 span.user-avatar.pull-left(style='margin-right:8px; margin-top:-5px;')
                   img.img-responsive.img-circle(src='https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png', title='John Doe', alt='John Doe', width='30px', height='30px')
                 span.user-name
-                  | John Doe
+                  | #{user.username}
                 b.caret
               ul.dropdown-menu
                 li
@@ -47,9 +47,9 @@
                         p.text-center.small
                           a(href='./3X6zm') Change Photo
                       .col-md-7
-                        span John Doe
+                        span #{user.Profile.first_name} #{user.Profile.last_name}
                         p.text-muted.small
-                          | example@pods.tld
+                          | #{user.email}
                         .divider
                         a.btn.btn-default.btn-xs(href='./56ExR')
                           i.fa.fa-user-o(aria-hidden='true')

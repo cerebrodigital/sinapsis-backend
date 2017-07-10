@@ -52,7 +52,7 @@ module.exports = function(models){
               // handle error
               console.log(err)
             }
-            req.flash( 'info', 'Email sent')
+            req.flash('info', 'Email sent')
             res.redirect('/login')
           })
         })
@@ -66,7 +66,7 @@ module.exports = function(models){
     .catch(function(err){return next(err)})
     .then((user)=>{
       if(!user){ next()}
-        user.password = md5(req.body.password)
+        user.password = req.body.password
         user.vhash = null
         user.save().then(function(saved){
           req.flash( 'info', 'Activated')

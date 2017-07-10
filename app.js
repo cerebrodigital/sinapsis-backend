@@ -38,12 +38,12 @@ passport.use(new LocalStrategy({
     .catch((err)=>{ return done(err) })
     .then((user)=>{
       if (!user){
-        done(null, false, { message: 'Email not found.'})
+        return done(null, false, { message: 'Email not found.'})
       }
       if(!user.validPassword(password)){
-        done(null, false, { message: 'Incorrect password.'})
+        return done(null, false, { message: 'Incorrect password.'})
       }
-      done(null, user)
+      return done(null, user)
     })
   }
 ));
@@ -54,8 +54,9 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(id, done) {
 
-  User.findById(id)
+  User.findById(id, {include: [models.Profile]})
   .then((found)=>{
+    console.log('este es el found', found)
     return done(null, found)
   })
   .catch((err)=>{

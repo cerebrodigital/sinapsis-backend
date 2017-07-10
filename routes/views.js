@@ -1,18 +1,20 @@
 var express = require('express');
 var middleware = require('../middleware')
+var helpers = require('../helpers')
 
 /* GET home page. */
 module.exports = function(models){
   let router = express.Router();
   router.get('/', function(req, res, next) {
-    res.render('landing', { title: 'Home' , user: req.user});
+    res.render('landing', helpers.baseLocals(req, { title: 'Landing' }));
   });
 
   router.get('/login', function(req, res, next) {
     if(req.user){
-      res.redirect('/?token=')
+      res.redirect('/')
     }else{
-      res.render('auth/login', { title: 'Conectar' });
+      //console.log('flash', req.flash('error'))
+      res.render('auth/login', helpers.baseLocals(req, {title: 'Conectar'}));
     }
   });
 
@@ -35,6 +37,12 @@ module.exports = function(models){
 
   router.get('/perfil', function(req, res, next) {
     res.render('auth/profile', { title: 'Profile'});
+  });
+
+  router.get('/perfil/:slug', function(req, res, next) {
+    models.User.findOne({ where: {slug: req.params.slug}})
+    .catch(err=>{next(err)})
+    .then(found=>{res.render('auth/profile', { title: 'Profile', vuser: found})}) 
   });
 
   router.get('/perfil-editar', function(req, res, next) {

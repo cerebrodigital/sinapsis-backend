@@ -1,4 +1,6 @@
 'use strict';
+var slug = require("slug")
+
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define('Post', {
     id: {
@@ -11,6 +13,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    slug: {
+      type: DataTypes.STRING
+    },
     url: {
       type: DataTypes.STRING,
       allowNull: false
@@ -21,10 +26,18 @@ module.exports = function(sequelize, DataTypes) {
     freezeTableName: true,
     underscored: true
   });
+
+
+  Post.hook('beforeSave', (post, options) => {
+    post.slug = slug(post.title)
+  })
+
   Post.associate = function(models) {
     Post.belongsTo(models.PostType)
     Post.belongsTo(models.User)
     Post.belongsTo(models.Category)
   }
+
+
   return Post;
 };

@@ -1,0 +1,32 @@
+{
+  "development": {
+    "dialect": "sqlite",
+    "storage": "./db.development.sqlite",
+    "gmailuser": "amorx.ink",
+    "gmailpassword": "ghrscVFG",
+    "jwtsecret":    "otro secreto :) !!",
+    "admin": {
+      "email": "soporte@sinapsis.com",
+      "password": "superman",
+      "username": "sinapsis",
+      "Profile": {
+        "first_name": "Cerebro",
+        "last_name": "Digital"
+      }
+    }
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
