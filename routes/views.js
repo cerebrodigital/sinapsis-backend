@@ -36,7 +36,7 @@ module.exports = function(models){
   });
 
   router.get('/perfil', function(req, res, next) {
-    res.render('auth/profile', { title: 'Profile'});
+    res.render('auth/profile', helpers.baseLocals(req, {title: 'Mi Perfil'}));
   });
 
   router.get('/perfil/:slug', function(req, res, next) {
@@ -50,7 +50,7 @@ module.exports = function(models){
   });
 
   router.get('/usuarios', function(req, res, next) {
-    res.render('users', { title: 'Usuarios'});
+    res.render('users', helpers.baseLocals(req, {title: 'Lista de Usuarios'}));
   });
 
   router.get('/buscar', function(req, res, next) {

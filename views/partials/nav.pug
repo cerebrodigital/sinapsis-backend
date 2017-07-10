@@ -45,24 +45,24 @@
                       .col-md-5
                         img.img-responsive(src='https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png', alt='Alternate Text', width='120px', height='120px')
                         p.text-center.small
-                          a(href='./3X6zm') Change Photo
+                          a(href='./3X6zm') Cambiar Avatar
                       .col-md-7
-                        span #{user.Profile.first_name} #{user.Profile.last_name}
+                        span user
                         p.text-muted.small
                           | #{user.email}
                         .divider
-                        a.btn.btn-default.btn-xs(href='./56ExR')
+                        a.btn.btn-default.btn-xs(href='/perfil')
                           i.fa.fa-user-o(aria-hidden='true')
-                          |  Profile
-                        a.btn.btn-default.btn-xs(href='#')
+                          |  Mi Perfil
+                        a.btn.btn-default.btn-xs(href='/usuarios')
                           i.fa.fa-address-card-o(aria-hidden='true')
-                          |  Contacts
+                          |  Usuarios
                         a.btn.btn-default.btn-xs(href='#')
                           i.fa.fa-cogs(aria-hidden='true')
-                          |  Settings
+                          |  Configuraciones
                         a.btn.btn-default.btn-xs(href='#')
                           i.fa.fa-question-circle-o(aria-hidden='true')
-                          |  Help!
+                          |  Ayuda!
                   .navbar-footer
                     .navbar-footer-content
                       .row
@@ -71,7 +71,7 @@
                             i.fa.fa-unlock-alt(aria-hidden='true')
                             |  Change Passowrd
                         .col-md-6
-                          a.btn.btn-default.btn-sm.pull-right(href='#')
+                          a.btn.btn-default.btn-sm.pull-right(href='/api/auth/logout')
                             i.fa.fa-power-off(aria-hidden='true')
                             |  Sign Out
             else
