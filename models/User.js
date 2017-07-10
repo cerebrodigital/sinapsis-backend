@@ -39,12 +39,19 @@ module.exports = function(sequelize, DataTypes) {
     User.belongsToMany(models.Achievement, {through: 'UserAchievement'})
     User.hasOne(models.Profile)
     User.hasMany(models.CategoryProfile)
-    /* User.hook('afterCreate', (user, options) => {
-      models.Profile.create({}).then(profile =>
-        user.setProfile(profile)
-      )
+    User.hook('afterCreate', (user, options) => {
+      models.Profile.findOne({where: {user_id: user.id}})
+      .catch( ()=> {throw new Error("Profile can't be created in after create user")})
+      .then( profile => {
+        if(!profile){
+          models.Profile.create({})
+          .catch( ()=> {throw new Error("Profile can't be created in after create user")})
+          .then(profile =>
+            user.setProfile(profile)
+          )
+        }
+      })
     })
-    */
   }
 
   User.allowed_columns  = ["email","username"]
