@@ -56,7 +56,7 @@ passport.deserializeUser(function(id, done) {
 
   User.findById(id, {include: [models.Profile]})
   .then((found)=>{
-    console.log('este es el found', found)
+    console.log('este es el found', found.id)
     return done(null, found)
   })
   .catch((err)=>{
